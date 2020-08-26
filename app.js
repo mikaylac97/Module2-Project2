@@ -17,8 +17,10 @@ const bindUserToViewLocals = require('./configs/user-locals.config');
 
 // Routers
 
+const indexRouter = require('./routes/index.routes');
+
 const app = express();
-require('./configs/session.config')(app);
+// require('./configs/session.config')(app);
 
 // Express View engine setup
 
@@ -38,6 +40,7 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 // Routes middleware
 
+app.use('/', indexRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => next(createError(404)));
