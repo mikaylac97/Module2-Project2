@@ -24,7 +24,7 @@ const commentRouter = require('./routes/comment.routes');
 
 
 const app = express();
-// require('./configs/session.config')(app);
+ require('./configs/session.config')(app);
 
 // Express View engine setup
 
