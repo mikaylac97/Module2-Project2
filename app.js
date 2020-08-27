@@ -22,8 +22,9 @@ const authRouter = require('./routes/auth.routes');
 const postRouter = require('./routes/post.routes');
 const commentRouter = require('./routes/comment.routes');
 
+
 const app = express();
-require('./configs/session.config')(app);
+// require('./configs/session.config')(app);
 
 // Express View engine setup
 
@@ -35,6 +36,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+
 
 app.use(bindUserToViewLocals);
 
