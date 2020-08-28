@@ -1,6 +1,18 @@
 <h2>{{ post.title }}</h2>
 
-<div>{{ post.content}} - by {{post.author.username}} </div>
+<div>
+{{!-- {{#if post.author === Session username???}} IF THE POST AUTHOR IS EQUAL TO THE SESSION USER ID --- NEED TO INVESTIGATE--}}
+<a href="/posts/edit/{{post._id}}">Edit</a>
+<form action="/posts/delete/{{post._id}}" method='POST'><button>Delete</button></form>
+{{!-- {{/if}} --}}
+</div>
+
+<div>
+  <img src="{{post.imageUrl}}" alt="{{post.title}}">
+  <p>
+    {{ post.content}} - by {{post.author.username}} 
+  </p>
+</div>
 
 <hr>
 
@@ -13,6 +25,7 @@
 {{/each}}
 
 <hr>
+
 <h3> Add a comment </h3>
 
 <form action="/posts/{{post._id}}/comment" method='POST'>
