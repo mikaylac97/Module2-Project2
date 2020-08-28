@@ -21,6 +21,7 @@
   "homepage": "https://github.com/mikaylac97/Module2-Project2#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.23.0",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
@@ -30,6 +31,8 @@
     "http-errors": "^1.8.0",
     "mongoose": "^5.10.1",
     "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^2.0.4",
     "serve-favicon": "^2.5.0"
   }

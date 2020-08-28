@@ -73,7 +73,7 @@ router.post('/login', (req, res, next) => {
         return;
       } else if (bcryptjs.compareSync(password, user.passwordHash)) {
         req.session.loggedInUser = user;
-        res.redirect('/post-create');
+        res.redirect('/posts');
       } else {
         res.render('auth/login-form.hbs', {
           errorMessage: 'Incorrect password.'
@@ -86,8 +86,7 @@ router.post('/login', (req, res, next) => {
 ///////////////////////////// LOGOUT ////////////////////////////////////
 
 router.post('/logout', (req, res) => {
-  res.session.destroy();
-
+  req.session.destroy();
   res.redirect('/');
 });
 
