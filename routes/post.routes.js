@@ -76,4 +76,13 @@ router.post('/posts/edit/:postId', (req, res, next) => {
     .catch(err => console.log(`Error while updating the post: ${err}`));
 });
 
+//POSt route to delete the post
+router.post('/posts/delete/:postId', (req, res, next) => {
+  Post.findByIdAndDelete(req.params.postId)
+    .then(() => {
+      res.redirect('/posts')
+    })
+    .catch(err => console.log(`Err while deleting a post: ${err}`));
+});
+
 module.exports = router;
