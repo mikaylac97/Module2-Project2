@@ -6,6 +6,13 @@
   <p>No posts yet! Go to nav bar to create a post.</p>
 {{/unless}}
 
+
 {{#each user.posts}}
-  <p><b>{{this.author.username}}</b>: {{this.content}} </p>
+<div>
+  <p><b>{{this.author.username}}</b> <img src="{{this.imageUrl}}">{{this.content}}</p>
+  <p>posted at: {{this.createdAt}}</p>
+    {{#if this.tags}}
+  <p>tags: {{this.tags}}</p>
+  {{/if}}
+  </div>
 {{/each}}
