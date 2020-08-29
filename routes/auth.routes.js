@@ -5,14 +5,15 @@ const mongoose = require('mongoose');
 const saltRounds = 10;
 const User = require('../models/User.model');
 const routeGuard = require('../configs/route-guard.config');
+const fileUploader = require('../configs/cloudinary.configs');
 
 ///////////////////////////// SIGNUP //////////////////////////////////
 //.get() route --> display signup form to users
 router.get('/signup', (req, res) => res.render('auth/signup-form'));
 
 //post() route --> to process form data 
-router.post('/signup', (req, res, next) => {
-    const {username, email, password } = req.body;
+router.post('/signup', fileUploader.single('image'), (req, res, next) => {
+    const {firstname, lastname, username, email, password } = req.body;
 
     if(!username || !email || !password) {
         res.render('auth/signup-form', {
@@ -21,15 +22,28 @@ router.post('/signup', (req, res, next) => {
         return;
     }
 
+ 
+    
+
     bcryptjs
         .genSalt(saltRounds)
         .then(salt => bcryptjs.hash(password, salt))
         .then(hashedPassword => {
-            return User.create({
-                username,
+            const newUser = {
+              username,
                 email,
-                passwordHash : hashedPassword
-            });
+                passwordHash : hashedPassword,
+                firstname,
+                lastname
+            }
+
+            if (req.file) {
+              newUser.profilePhotoUrl = req.file.path;
+            }
+
+            return User.create(
+                newUser
+            );
         })
         .then(userFromDB => {
             console.log(`Newly created user is: ${userFromDB}`);
@@ -64,7 +78,7 @@ router.post('/login', (req, res, next) => {
     return;
   }
 
-  User.findOne({ email })
+  User.findOne({ email }).populate('posts')
     .then(user => {
       if (!user) {
         res.render('auth/login-form.hbs', {
@@ -91,7 +105,7 @@ router.post('/logout', (req, res) => {
 });
 
 router.get('/profile', routeGuard, (req, res) => {
-  res.render('users/user-profile.hbs');
+  res.render('./profile');
 });
 
 module.exports = router;
