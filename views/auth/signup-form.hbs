@@ -1,6 +1,14 @@
 <div id='form'>
     <h2>Signup</h2>
-    <form action="/signup" method='POST'>
+    <form action="/signup" method='POST'  enctype="multipart/form-data">
+        <label>First Name
+            <input type="text" name="firstname" placeholder="Insert First Name" />
+        </label>
+
+        <label>Last Name
+            <input type="text" name="lastname" placeholder="Insert Last Name" />
+        </label>
+
         <label>Username
             <input type="text" name="username" placeholder="Insert Username" />
         </label>
@@ -11,6 +19,10 @@
         
         <label>Password
             <input type="password" name="password" placeholder="**********" />
+        </label>
+
+        <label>Profile Photo
+            <input type="file" name="image" />
         </label>
 
         <button type='submit'>Create Account</button>
