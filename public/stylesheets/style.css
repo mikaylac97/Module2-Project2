@@ -1,10 +1,12 @@
 body {
   padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font-family: 'Merriweather Sans', sans-serif;
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 
 a {
-  color: #00b7ff;
+  color:  white;
   text-decoration: none;
   font-size: 1.5em;
 }
@@ -62,8 +64,39 @@ form button:hover {
   width: 100%;
 }
 
+.landing-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-btns a {
+  margin: 0px 25px;
+}
+
+#landing-logo {
+    height: 50px;
+    padding: 0;
+    text-align: center;
+    font-size: 80px;
+    
+}
+
+#logo-and-slogan {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white
+}
+
+#logo-and-slogan span {
+  padding: 30px;
+  font-size: 20px;
+}
+
 ul {
-  border-bottom: 2px solid #43a3e6;
+  /* border-bottom: 2px solid #43a3e6; */
   height: 30px;
   padding: 1em 0;
   list-style-type: none;
@@ -97,10 +130,47 @@ ul li {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #00b7ff;
+  color: #fff;
   font-size: 1.5em;
   display: inline-block;
   margin: 0;
+}
+
+#search-bar {
+  display: flex;
+  justify-content: left;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 70%;
+  padding: 20px;
+}
+
+#search-bar img {
+  width: 2vw;
+  margin: 0px 10px;
+}
+
+#search-bar input {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+}
+
+.sign-up-btn {
+  background-color: rgb(29, 161, 242);
+  padding: 20px 30px;
+  border-radius: 3px;
+  color: #fff;
+}
+
+#to-right a {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 10px 25px; */
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-shrink: 0;
 }
 
 #to-right span {
