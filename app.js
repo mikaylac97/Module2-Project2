@@ -24,6 +24,7 @@ const postRouter = require('./routes/post.routes');
 const commentRouter = require('./routes/comment.routes');
 
 
+
 const app = express();
  require('./configs/session.config')(app);
 
@@ -51,6 +52,7 @@ app.use('/', authRouter);
 app.use('/', postRouter);
 app.use('/', commentRouter);
 app.use('/', userRouter);
+
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => next(createError(404)));

@@ -12,8 +12,6 @@ router.get('/', loggedIn, (req, res, next) => {
 
 
 
-
-
 // redirects user to their profile page if they are logged in
 function loggedIn(req, res, next) {
     if (req.session.loggedInUser) {
