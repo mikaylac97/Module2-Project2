@@ -73,6 +73,10 @@ ul li {
   line-height: 20px;
 }
 
+.userPosts img {
+  width: 20vw;
+}
+
 #to-right {
   display: flex;
   align-items: center;
