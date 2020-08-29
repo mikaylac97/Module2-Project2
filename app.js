@@ -18,6 +18,7 @@ const bindUserToViewLocals = require('./configs/user-locals.config');
 
 // Routers
 const indexRouter = require('./routes/index.routes');
+const userRouter = require('./routes/user.routes');
 const authRouter = require('./routes/auth.routes');
 const postRouter = require('./routes/post.routes');
 const commentRouter = require('./routes/comment.routes');
@@ -49,6 +50,7 @@ app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use('/', postRouter);
 app.use('/', commentRouter);
+app.use('/', userRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => next(createError(404)));

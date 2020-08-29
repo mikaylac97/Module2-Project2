@@ -3,6 +3,7 @@ const router = express.Router();
 const fileUploader = require('../configs/cloudinary.configs');
 const Post = require('../models/Post.model');
 const Comment = require('../models/Comment.model');
+const User = require('../models/User.model');
 
 
 //Get route to render a form for users to create a new post
@@ -20,6 +21,8 @@ router.post('/post-create', fileUploader.single('image'), (req, res, next) => {
     imageUrl: req.file.path
   })
   .then(postDocFromDB => {
+    User.findByIdAndUpdate(req.session.loggedInUser._id, {$push: {posts: postDocFromDB._id}}) //{posts : [...req.user.posts, postDocFromDB._id]})
+
     console.log(postDocFromDB);
     res.redirect('/posts')
   })
