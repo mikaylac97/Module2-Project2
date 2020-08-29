@@ -13,12 +13,14 @@ router.get('/post-create', (req, res) => res.render('posts/create'));
 //Post route to save the new post in the Database
 router.post('/post-create', fileUploader.single('image'), (req, res, next) => {
   const { title, content, tags } = req.body;
-
+  const separatedTags = tags.split(' ');
+  
+  console.log(separatedTags);
   Post.create({
     title,
     content,
     author: req.session.loggedInUser._id,
-    tags,
+    tags: separatedTags,
     imageUrl: req.file.path
   })
   .then(postDocFromDB => {
