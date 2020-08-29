@@ -1,1 +1,39 @@
-<h3>this is the account page</h3>
+<h3>this is the account page for {{user.username}}</h3>
+
+
+
+
+<div id='form'>
+    <h2>Account Information</h2>
+    <form action="/account-edit" method='POST'  enctype="multipart/form-data">
+        <label>First Name
+            <input type="text" name="firstname"  value={{user.firstname}} />
+        </label>
+
+        <label>Last Name
+            <input type="text" name="lastname" value={{user.lastname}} />
+        </label>
+
+        <label>Username
+            <input type="text" name="username" value={{user.username}} />
+        </label>
+
+        <label>Email
+            <input type="email" name="email" value={{user.email}} />
+        </label>
+        
+        <label>Password
+            <input type="password" name="password" placeholder="**********" />
+        </label>
+
+        <label>Profile Photo
+            <input type="file" name="image" />
+        </label>
+
+        <button type='submit'>Edit Account</button>
+
+        {{#if errorMessage}}
+            <p class='error'>{{errorMessage}}</p>
+        {{/if}}
+    </form>
+</div>

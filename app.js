@@ -22,6 +22,8 @@ const userRouter = require('./routes/user.routes');
 const authRouter = require('./routes/auth.routes');
 const postRouter = require('./routes/post.routes');
 const commentRouter = require('./routes/comment.routes');
+const accountRouter = require('./routes/account.routes')
+const collectionRouter = require('./routes/collection.routes');
 
 
 
@@ -52,6 +54,8 @@ app.use(require('./configs/route-guard.config.js'))
 app.use('/', postRouter);
 app.use('/', commentRouter);
 app.use('/', userRouter);
+app.use('/', accountRouter);
+app.use('/', collectionRouter);
 
 
 // Catch missing routes and forward to error handler
