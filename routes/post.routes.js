@@ -6,6 +6,7 @@ const Comment = require('../models/Comment.model');
 const User = require('../models/User.model');
 
 
+
 //Get route to render a form for users to create a new post
 router.get('/post-create', (req, res) => res.render('posts/create'));
 
@@ -54,7 +55,9 @@ router.get('/posts/:postId', (req, res, next) => {
     })
     .then((foundPost) => {
       console.log(`The post information:${foundPost}`);
-      res.render('posts/details', { post: foundPost })
+      const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
+      console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
+      res.render('posts/details', { post: foundPost, authorized })
     })
     .catch(err => console.log(`Err while getting a single post ${err}`));
 });
