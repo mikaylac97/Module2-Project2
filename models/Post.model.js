@@ -7,7 +7,8 @@ const postSchema = new Schema(
     author: { type: Schema.Types.ObjectId, ref:'User'},
     comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
     tags: [{ type: String }],
-    imageUrl: { type: String }
+    imageUrl: { type: String },
+    location: { type: String }
   },
   {
     timestamps: true
