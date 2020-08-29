@@ -78,7 +78,7 @@ router.post('/login', (req, res, next) => {
     return;
   }
 
-  User.findOne({ email })
+  User.findOne({ email }).populate('posts')
     .then(user => {
       if (!user) {
         res.render('auth/login-form.hbs', {

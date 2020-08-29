@@ -21,10 +21,12 @@ router.post('/post-create', fileUploader.single('image'), (req, res, next) => {
     imageUrl: req.file.path
   })
   .then(postDocFromDB => {
-    User.findByIdAndUpdate(req.session.loggedInUser._id, {$push: {posts: postDocFromDB._id}}) //{posts : [...req.user.posts, postDocFromDB._id]})
-
-    console.log(postDocFromDB);
-    res.redirect('/posts')
+    User.findByIdAndUpdate(req.session.loggedInUser._id, {$push: {posts: postDocFromDB._id}}, {new: true}) //{posts : [...req.user.posts, postDocFromDB._id]})
+    .then(user => {
+      console.log(user)
+      console.log(postDocFromDB);
+      res.redirect('/posts')
+    })
   })
   .catch(err => console.log(`Error while creating a new post: ${err}`));
 });
