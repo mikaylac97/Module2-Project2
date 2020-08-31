@@ -15,7 +15,7 @@ router.get('/signup', (req, res) => res.render('auth/signup-form'));
 router.post('/signup', fileUploader.single('image'), (req, res, next) => {
     const {firstname, lastname, username, email, password } = req.body;
 
-    if(!username || !email || !password) {
+    if(!username || !email || !password || !firstname || !lastname) {
         res.render('auth/signup-form', {
             errorMessage: 'All fields are mandatory. Please provide your username, email and password.'
         });
@@ -78,7 +78,7 @@ router.post('/login', (req, res, next) => {
     return;
   }
 
-  User.findOne({ email }).populate('posts')
+  User.findOne({ email }).populate('posts') //need to edit out the .populate method and add it to the user routes
     .then(user => {
       if (!user) {
         res.render('auth/login-form.hbs', {
