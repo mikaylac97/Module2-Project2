@@ -23,6 +23,9 @@ const authRouter = require('./routes/auth.routes');
 const postRouter = require('./routes/post.routes');
 const commentRouter = require('./routes/comment.routes');
 const searchRouter = require('./routes/search.routes');
+const accountRouter = require('./routes/account.routes')
+const collectionRouter = require('./routes/collection.routes');
+
 
 
 const app = express();
@@ -53,6 +56,9 @@ app.use('/', postRouter);
 app.use('/', commentRouter);
 app.use('/', userRouter);
 app.use('/', searchRouter);
+app.use('/', accountRouter);
+app.use('/', collectionRouter);
+
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => next(createError(404)));
