@@ -22,6 +22,7 @@ const userRouter = require('./routes/user.routes');
 const authRouter = require('./routes/auth.routes');
 const postRouter = require('./routes/post.routes');
 const commentRouter = require('./routes/comment.routes');
+const searchRouter = require('./routes/search.routes');
 
 
 const app = express();
@@ -51,6 +52,7 @@ app.use(require('./configs/route-guard.config.js'))
 app.use('/', postRouter);
 app.use('/', commentRouter);
 app.use('/', userRouter);
+app.use('/', searchRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => next(createError(404)));

@@ -12,4 +12,4 @@ const collectionSchema = new Schema(
   }
 );
 
-module.exports = model('Collection', collectionSchemaSchema)
+module.exports = model('Collection', collectionSchema)

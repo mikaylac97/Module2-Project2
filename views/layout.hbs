@@ -17,11 +17,16 @@
     <nav>
       <ul>
         <li id="to-left">
-          <p><a href="/"> IronTumblr </a></p>
+          <p><a href="/posts"> IronTumblr </a></p>
         </li>
         <li id="to-right">
           {{#if user}}
-            <a href="/views/posts/search.hbs">Search</a> <span> | </span>
+            <div>
+              <form action="/search" method='POST'>
+              <label for="searchQueryInput"> <input type="text" name="searchQuery" id="searchQueryInput" placeholder="Search For a Post"><button>Search</button></label>
+              </form>
+            </div>
+            {{!-- <a href="/search">Search</a> <span> | </span> --}}
             <a href="/user-profile">User Profile</a> <span> | </span>
             <!--route will go here once created and will show a drop down menu-->
             <a href="/post-create">Add a post</a> <span> | </span>
