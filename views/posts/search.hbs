@@ -21,6 +21,7 @@
         {{#each userSearchResult}}
         <h4>User: {{username}}</h2>
         <img src="{{profilePhotoUrl}}" alt="{{username}}">
+        <a href="user/{{_id}}">User Profile</a>
         {{/each}}
     {{else}}
         <p>No Users found</p>

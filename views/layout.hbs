@@ -26,8 +26,9 @@
               <label for="searchQueryInput"> <input type="text" name="searchQuery" id="searchQueryInput" placeholder="Search For a Post"><button>Search</button></label>
               </form>
             </div>
-            {{!-- <a href="/search">Search</a> <span> | </span> --}}
+            {{!-- <a href="/user/{{req.session.loggedInUser._id}}">User Profile</a> <span> | </span> --}}
             <a href="/user-profile">User Profile</a> <span> | </span>
+            {{!-- <a href="/user/{{session.l}}">User Profile</a> <span> | </span> --}}
             <!--route will go here once created and will show a drop down menu-->
             <a href="/post-create">Add a post</a> <span> | </span>
             <form id="logout-form" action="/logout" method="POST">
