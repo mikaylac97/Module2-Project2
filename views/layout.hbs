@@ -27,13 +27,25 @@
           <p><a href="/"> IronTumblr </a></p>
         </li>
         <li id="to-right">
-            <a href="/views/posts/search.hbs">Search</a> <span> | </span>
-            <a href="/user-profile">User Profile</a> <span> | </span>
-            <!--route will go here once created and will show a drop down menu-->
-            <a href="/post-create">Add a post</a> <span> | </span>
-            <form id="logout-form" action="/logout" method="POST">
+
+          <div class="dropdown">
+            <button class="dropbtn"><img src="{{user.profilePhotoUrl}}" class="userAvatar"></button>
+            <div class="dropdown-content">
+              <a href="/user-profile">Profile</a>
+              <a href="/post-create">Add a post</a>
+              <form id="logout-form" action="/logout" method="POST">
               <button>Logout</button>
             </form>
+            </div>
+          </div>
+
+
+          {{!-- <a href="/user-profile"><img src="{{user.profilePhotoUrl}}" class="userAvatar"></a> --}}
+            <!--route will go here once created and will show a drop down menu-->
+            {{!-- <a href="/post-create">Add a post</a> <span> | </span> --}}
+            {{!-- <form id="logout-form" action="/logout" method="POST"> --}}
+              {{!-- <button>Logout</button> --}}
+            {{!-- </form> --}}
           {{/if}}
         </li>
       </ul>
