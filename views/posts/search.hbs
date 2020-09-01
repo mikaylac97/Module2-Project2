@@ -1,0 +1,40 @@
+<div>
+    <h2>Search Results</h2>
+</div>
+
+<div>
+    <h2>Posts</h2>
+    {{#if searchResult}}
+        {{#each searchResult}}
+        <h4>{{title}}</h2>
+        <img src="{{imageUrl}}" alt="{{title}}">
+        <p>{{content}} by {{author.username}}</p>
+        <a href="posts/{{_id}}">Go to post</a>
+        {{/each}}
+    {{else}}
+        <p>No posts found</p>
+    {{/if}}
+</div>
+<div>
+    <h2>Users</h2>
+    {{#if userSearchResult}}
+        {{#each userSearchResult}}
+        <h4>User: {{username}}</h2>
+        <img src="{{profilePhotoUrl}}" alt="{{username}}">
+        <a href="user/{{_id}}">User Profile</a>
+        {{/each}}
+    {{else}}
+        <p>No Users found</p>
+    {{/if}}
+</div>
+<div>
+    <h2>Collections</h2>
+    {{#if collection}}
+        {{#each collection}}
+            <h4>Collection's Title: {{title}}</h2>
+            <p>{{description}}</p>
+        {{/each}}
+    {{else}}
+        <p>No Collections found</p>
+    {{/if}}
+</div>

@@ -1,12 +1,10 @@
 <h2>{{ post.title }}</h2>
 
 <div>
-{{!-- {{#if post.author === Session username???}} IF THE POST AUTHOR IS EQUAL TO THE SESSION USER ID --- NEED TO INVESTIGATE--}}
 {{#if authorized}}
 <a href="/posts/edit/{{post._id}}">Edit</a>
 <form action="/posts/delete/{{post._id}}" method='POST'><button>Delete</button></form>
 {{/if}}
-{{!-- {{/if}} --}}
 </div>
 
 <div>

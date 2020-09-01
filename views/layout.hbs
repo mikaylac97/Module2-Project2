@@ -24,11 +24,23 @@
       <ul>
         {{#if user}}
         <li id="to-left">
-          <p><a href="/"> IronTumblr </a></p>
+          <p><a href="/posts"> IronTumblr </a></p>
         </li>
         <li id="to-right">
+          {{#if user}}
+            <div>
+              <form action="/search" method='POST'>
+              <label for="searchQueryInput"> <input type="text" name="searchQuery" id="searchQueryInput" placeholder="Search For a Post"><button>Search</button></label>
+              </form>
+            </div>
+            {{!-- <a href="/user/{{req.session.loggedInUser._id}}">User Profile</a> <span> | </span> --}}
+            <a href="/user-profile">User Profile</a> <span> | </span>
+            {{!-- <a href="/user/{{session.l}}">User Profile</a> <span> | </span> --}}
+            <!--route will go here once created and will show a drop down menu-->
+            <a href="/post-create">Add a post</a> <span> | </span>
+            <form id="logout-form" action="/logout" method="POST">
 
-          <div class="dropdown">
+          {{!-- <div class="dropdown">
             <button class="dropbtn"><img src="{{user.profilePhotoUrl}}" class="userAvatar"></button>
             <div class="dropdown-content">
               <p>@{{user.username}}</p>
@@ -36,7 +48,7 @@
               <a href="/post-create">Add a post</a>
               <a href="collection/collection.hbs">Collections</a>
               <a href="./account/account.hbs">Account Details</a>
-              <form id="logout-form" action="/logout" method="POST">
+              <form id="logout-form" action="/logout" method="POST"> --}}
               <button>Logout</button>
             </form>
             </div>

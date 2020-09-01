@@ -1,3 +1,14 @@
+<h1>this is the user's profile</h1>
+
+<h2>{{user.username}}</h2>
+<div>
+{{#if authorized}}
+<a href="/account">Account Information</a>
+{{/if}}
+</div>
+
+
+
 <h1>{{user.firstname}} {{user.lastname}}</h1>
 <h2>@{{user.username}}</h2>
 <div>
