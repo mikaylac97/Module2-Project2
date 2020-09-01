@@ -7,21 +7,27 @@
 {{/if}}
 </div>
 
+
+
+<h1>{{user.firstname}} {{user.lastname}}</h1>
+<h2>@{{user.username}}</h2>
+<div>
+    <h3>Followers</h3>
+    <h3>Following</h3>
+</div>
+<h3>Collections</h3>
+<h3>Likes</h3>
+
 {{#unless user.posts}}
   <p>No posts yet! Go to nav bar to create a post.</p>
 {{/unless}}
 
-
-{{#each user.posts}}
 <div class="userPosts">
-  <p><b>{{this.author.username}}</b></p> 
-  <p><img src="{{this.imageUrl}}"></p>
-  <p>{{this.content}}</p>
-  <p>posted at: {{this.createdAt}}</p>
-    {{#if this.tags}}
-  <p>tags: {{this.tags}}</p>
-  {{/if}}
+{{#each user.posts}}
+<div>
+  <a href="posts/details.hbs">
+  <img src="{{this.imageUrl}}" class="portrait">
+  </a>
+ {{/each}} 
   </div>
-{{/each}}
-
-<p>{{session.loggedInUser._id}}</p>
+</div>
