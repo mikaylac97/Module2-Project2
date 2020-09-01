@@ -157,13 +157,17 @@ ul li {
 }
 
 .userPosts{
-  display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;  
 }
 
 .userPosts img {
-  width: 20%
+  width: 200px;
+  height: 200px;
 }
 
 #to-right {
