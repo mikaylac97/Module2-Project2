@@ -53,7 +53,7 @@ a {
   font-size: 1.5em;
 }
 
-form {
+#form form {
   margin: 30px auto;
   width: 380px;
 }
@@ -196,8 +196,9 @@ ul li {
   margin: 0;
 }
 
-#search-bar {
+#search-bar form {
   display: flex;
+  align-items: center;
   justify-content: left;
   background-color: rgba(255, 255, 255, 0.5);
   width: 70%;
@@ -213,6 +214,7 @@ ul li {
   border: none;
   background-color: transparent;
   font-size: 20px;
+  margin: auto;
 }
 
 .sign-up-btn {
