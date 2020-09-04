@@ -1,29 +1,17 @@
 <h3>this is {{user.firstname}} collections</h3>
 
 
-<div id='form'>
-    <h2>Create a collection</h2>
-    <form action="/account-edit" method='POST'  enctype="multipart/form-data">
-        <label>Title
-            <input type="text" name="title"  placeholder="Enter title" />
-        </label>
- 
-
-        <label>Description
-            <input type="text" name="description" placeholder="Enter a description for the collection" />
-        </label>
-
-       <label>tags
-            <input type="text" name="tags" placeholder="Enter some tags" />
-        </label>
+{{#if collections}}
+  <ul>
+    {{#each collections}}
+      <li>
+        This is the title: {{this.title}}  by {{ this.author.firstname }}
+        <img src ={{this.collectionPhotoUrl}} alt="image of collection">
+        <a href="/collection/{{this._id}}">Click to see photos in this collection"</a>
         
-        <label>Collection Photo
-            <input type="file" name="image" />
-        </label>
-
-        <button type='submit'>Edit Account</button>
-
-        {{#if errorMessage}}
-            <p class='error'>{{errorMessage}}</p>
-        {{/if}}
-    </form>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No collections!</p>
+{{/if}}
