@@ -22,3 +22,12 @@ router.get('/user/:userId', (req, res, next) => {
 });
 
 module.exports = router;
+
+//router.get('/posts', (req, res, next) => {
+//     Post.find()
+//     .populate('author')
+//     .then(postsFromDB => {
+//       res.render('posts/list', { posts: postsFromDB.reverse() });
+//     })
+//     .catch(err => console.log(`Err while getting all the posts: ${err}`));
+// });
