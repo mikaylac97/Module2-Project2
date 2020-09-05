@@ -1,15 +1,63 @@
+/* Dropdown Button */
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: transparent;}
+
 body {
   padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  font-family: 'Merriweather Sans', sans-serif;
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 
 a {
-  color: #00b7ff;
+  color:  white;
   text-decoration: none;
   font-size: 1.5em;
 }
 
-form {
+#content img {
+  width: 30%;
+}
+
+#form form {
   margin: 30px auto;
   width: 380px;
 }
@@ -62,8 +110,39 @@ form button:hover {
   width: 100%;
 }
 
+.landing-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-btns a {
+  margin: 0px 25px;
+}
+
+#landing-logo {
+    height: 50px;
+    padding: 0;
+    text-align: center;
+    font-size: 80px;
+    
+}
+
+#logo-and-slogan {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white
+}
+
+#logo-and-slogan span {
+  padding: 30px;
+  font-size: 20px;
+}
+
 ul {
-  border-bottom: 2px solid #43a3e6;
+  /* border-bottom: 2px solid #43a3e6; */
   height: 30px;
   padding: 1em 0;
   list-style-type: none;
@@ -73,9 +152,14 @@ ul li {
   line-height: 20px;
 }
 
-.userPosts img {
-  width: 20vw;
+.userAvatar {
+  vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
+}
+
 
 #to-right {
   display: flex;
@@ -97,10 +181,46 @@ ul li {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #00b7ff;
+  color: #fff;
   font-size: 1.5em;
   display: inline-block;
   margin: 0;
+}
+
+#search-bar form {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 70%;
+  padding: 20px;
+}
+
+#search-bar img {
+  width: 2vw;
+  margin: 0px 10px;
+}
+
+#search-bar input {
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  margin: auto;
+}
+
+.sign-up-btn {
+  background-color: rgb(29, 161, 242);
+  padding: 20px 30px;
+  border-radius: 3px;
+  color: #fff;
+}
+
+#to-right {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  float: right;
+
 }
 
 #to-right span {
@@ -112,6 +232,7 @@ ul li {
   display: flex;
   justify-content: center;
 }
+
 
 #to-left {
   float: left;

@@ -26,8 +26,6 @@ router.post('/post-create', fileUploader.single('image'), (req, res, next) => {
   .then(postDocFromDB => {
     User.findByIdAndUpdate(req.session.loggedInUser._id, {$push: {posts: postDocFromDB._id}}, {new: true}) //{posts : [...req.user.posts, postDocFromDB._id]})
     .then(user => {
-      console.log(user)
-      console.log(postDocFromDB);
       res.redirect('/posts')
     })
   })
@@ -39,7 +37,7 @@ router.get('/posts', (req, res, next) => {
   Post.find()
     .populate('author')
     .then(postsFromDB => {
-      res.render('posts/list', { posts: postsFromDB });
+      res.render('posts/list', { posts: postsFromDB.reverse() });
     })
     .catch(err => console.log(`Err while getting all the posts: ${err}`));
 });
