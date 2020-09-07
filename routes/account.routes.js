@@ -45,7 +45,7 @@ router.post('/account-edit', fileUploader.single('image'), (req, res, next) => {
         })
         .then(userFromDB => {
             console.log(`Edited user  is: ${userFromDB}`);
-            res.redirect('/login');
+            res.redirect('/login');//need to change this to redirect to their home page or something else
         })
         .catch(error => {
             if( error instanceof mongoose.Error.ValidationError) {
