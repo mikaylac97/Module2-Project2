@@ -1,0 +1,38 @@
+<h2>Which collection would you like to add the post to?</h2>
+
+
+{{#with data}}
+{{#if posts}}
+  <ul>
+    {{#each posts}}
+      <li>
+        Title: {{this.title}}
+         <div id='form'>
+            <form action="/add-to-collection/{{this._id}}" method='POST'>
+              <label for="collections">Choose a collection:</label>
+              <select id="collections" name="collections">
+                  
+                  {{#if ../collections}}
+                    {{#each ../collections}}
+                        <option value={{this._id}}>{{this.title}}</option>
+                    {{/each}}
+                {{else}}
+                <option value=''> Create a new collection and add to it</option>
+                {{/if}}
+                
+              </select>
+            <button type='submit'>Add to Collection</button>
+            {{#if errorMessage}}
+             <p class='error'>{{errorMessage}}</p>
+             {{/if}}
+            </form>
+        <div>
+        
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No posts!</p>
+{{/if}}
+
+{{/with}}
