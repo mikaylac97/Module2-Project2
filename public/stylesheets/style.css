@@ -53,7 +53,7 @@ a {
   font-size: 1.5em;
 }
 
-#content img {
+#content {
   width: 30%;
 }
 
@@ -153,11 +153,19 @@ ul li {
 }
 
 .userAvatar {
-  vertical-align: middle;
+    vertical-align: middle;
     width: 50px;
     height: 50px;
     border-radius: 50%;
 }
+
+.userPosts {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.userPosts img {
+  width: 30%;
 }
 
 
