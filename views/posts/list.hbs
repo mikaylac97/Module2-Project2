@@ -8,7 +8,7 @@
       <div id="content">
       <li class="userPosts">
         <img src="{{this.imageUrl}}" alt="{{this.title}}">
-        <p>{{this.title}} by {{this.author.username}}</p>
+        <p>{{this.title}} by <a href="/user/{{this.author._id}}">{{this.author.username}}</a></p>
         <a href="/posts/{{this._id}}"> Show details</a>
 
       </li>
