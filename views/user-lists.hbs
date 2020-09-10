@@ -1,0 +1,30 @@
+<h3>All the Users</h3>
+
+<ul>
+    {{#each users}}
+      <li>
+        Name: {{this.firstname}} {{this.lastname}}
+        Email: {{this.email}}
+            {{#if Following}}
+                <div id='form'>
+                <form action="/un-follow/{{this._id}}" method='POST'>
+                <button type='submit'>Un-Follow</button>
+                {{#if errorMessage}}
+                <p class='error'>{{errorMessage}}</p>
+                {{/if}}
+            </form>
+
+            {{else}}
+                <div id='form'>
+                <form action="/follow/{{this._id}}" method='POST'>
+                <button type='submit'>Follow</button>
+                {{#if errorMessage}}
+                <p class='error'>{{errorMessage}}</p>
+                {{/if}}
+            </form>
+            {{/if}}
+        </div>
+        
+      </li>
+    {{/each}}
+</ul>

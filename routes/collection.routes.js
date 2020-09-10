@@ -7,6 +7,49 @@ const User = require('../models/User.model');
 const { post } = require('./post.routes');
 const Post = require('../models/Post.model');
 
+
+//get route to go to specific collections page
+router.get('/collection/:collectionId', (req, res, next) => {
+    Collection.findById(req.params.collectionId)
+    .populate('posts')
+    .then(collectionFromDb => {  
+        //console.log('This is the collection from Db', collectionFromDb);
+        res.render('collection/specific.collection.hbs', collectionFromDb);
+    })
+    .catch(err=> {
+        console.log(`Error finding collection in database${err}`)
+    })
+})
+
+//post route to delete post from collection
+
+router.post('/delete-from-collection/:postId/:collectionId', (req, res, next) => {
+    //console.log('this is the post id', req.params.postId)
+    //console.log('this is the collection id', req.params.collectionId)
+    Collection.findByIdAndUpdate(req.params.collectionId)
+    .then(collectionFromDb => {
+        //console.log('this is the collection from db', collectionFromDb.posts)
+        collectionFromDb.posts.forEach((element, index) =>{
+            //console.log('this is the element',element)
+            //console.log('this is the postId', req.params.postId)
+            if(element == req.params.postId) {
+                collectionFromDb.posts.splice(index,1)
+                //console.log('in the for each splice---------------------------')
+            }
+        })
+        collectionFromDb
+        .save()
+        .then(updatedCollection => {
+            console.log('this is the updated collection', updatedCollection)
+        res.redirect(`/collection/${req.params.collectionId}`)})
+        .catch(err =>{`Error deleting post from collection`})
+
+        
+    })
+    .catch(err => {console.log(`Error finding collection from database${err}`)});
+})
+
+
 //get route to retrieve the collections page
 router.get('/collections', (req, res, next) =>{
     User.findById(req.session.loggedInUser._id)
@@ -25,19 +68,6 @@ router.get('/collections', (req, res, next) =>{
         console.log(`Error finding specific user: ${err}`)
     })
 })
-
-//get route to go to specific collections page
-router.get('/collection/:collectionId', (req, res, next) => {
-    Collection.findById(req.params.collectionId)
-    .then(collectionFromDb => {
-        console.log('This is the collection from Db', collectionFromDb);
-        res.render('collection/specific.collection.hbs');
-    })
-    .catch(err=> {
-        console.log(`Error finding collection in database${err}`)
-    })
-})
-    
 
 
 //get route to retrieve the create-collections page
@@ -79,7 +109,7 @@ router.post('/create-collection', fileUploader.single('image'), (req, res, next)
 
 //get route to add posts to collections
 router.get('/add-to-collection', (req, res, next) =>{
-    const postId = req.params.postId;
+    //const postId = req.params.postId;
     User.findById(req.session.loggedInUser._id)
     .populate('collections posts')
     .then(postsFromDb => {
@@ -102,13 +132,28 @@ router.get('/add-to-collection', (req, res, next) =>{
 
 //post route to add posts to collections
 router.post('/add-to-collection/:postId', (req, res, next) => {
-    console.log('this is collection id', req.params.postId)
-    
+    console.log('this is the post id', req.params.postId)
+    console.log('this is the collection id', req.body.collections)
+    Collection.findByIdAndUpdate(req.body.collections,{$push: {posts: req.params.postId}}, {new: true})
+    .then(collectionUpdate => {
+        console.log('this is the new collection' ,collectionUpdate);
+        res.redirect(`/collection/${req.body.collections}`)
+    })
+    .catch(err => {`Error while adding post to collection: ${err}`})
 })
 
 
 
-
+//post route to delete collections
+router.post('/delete-collection/:collectionId', (req, res, next) => {
+    console.log(req.params.collectionId)
+    Collection.findByIdAndDelete(req.params.collectionId)
+    .then(deletedCollection => {
+        console.log('this is the deleted collection', deletedCollection)
+        res.redirect('/collections');
+    })
+    .catch(err=> {`Error deleting collection: ${err}`})
+})
 
 
 

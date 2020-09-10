@@ -25,6 +25,7 @@ const commentRouter = require('./routes/comment.routes');
 const searchRouter = require('./routes/search.routes');
 const accountRouter = require('./routes/account.routes')
 const collectionRouter = require('./routes/collection.routes');
+const followRouter = require('./routes/follow.routes');
 
 
 
@@ -58,6 +59,7 @@ app.use('/', userRouter);
 app.use('/', searchRouter);
 app.use('/', accountRouter);
 app.use('/', collectionRouter);
+app.use('/', followRouter);
 
 
 // Catch missing routes and forward to error handler
