@@ -5,10 +5,11 @@
   <ul>
       {{#each posts}}
     <div id="timeline">
-      <div id="content">
-      <li class="userPosts">
-        <img src="{{this.imageUrl}}" alt="{{this.title}}">
-        <p>{{this.title}} by {{this.author.username}}</p>
+      <div>
+      <li>
+        <img src="{{this.author.profilePhotoUrl}}" class="userAvatar"><a href="/user/{{this.author._id}}">{{this.author.username}}</a>
+        <img src="{{this.imageUrl}}" id="content" alt="{{this.title}}">
+        <p>{{this.title}}</p>
         <a href="/posts/{{this._id}}"> Show details</a>
 
       </li>

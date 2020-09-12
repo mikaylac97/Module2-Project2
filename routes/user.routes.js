@@ -5,10 +5,10 @@ const Post = require('../models/Post.model');
 
 // GET user profile
 
-router.get('/user-profile', (req, res, next) => {
-    const authorized = true;
-    res.render('profile', {authorized})
-});
+// router.get('/user-profile', (req, res, next) => {
+//     const authorized = true;
+//     res.render('profile', {authorized})
+// });
 
 router.get('/user/:userId', (req, res, next) => {
     User.findById(req.params.userId)
