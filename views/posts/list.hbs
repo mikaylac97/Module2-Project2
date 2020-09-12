@@ -5,15 +5,14 @@
   <ul>
       {{#each posts}}
     <div id="timeline">
-      <div>
-      <li>
-        <img src="{{this.author.profilePhotoUrl}}" class="userAvatar"><a href="/user/{{this.author._id}}">{{this.author.username}}</a>
+      <li id="eachPost">
+        <div id="aviAndUser">
+        <img src="{{this.author.profilePhotoUrl}}" class="userAvatar"><a href="/user/{{this.author._id}}" id="username">{{this.author.username}}</a>
+        </div>
         <img src="{{this.imageUrl}}" id="content" alt="{{this.title}}">
         <p>{{this.title}}</p>
-        <a href="/posts/{{this._id}}"> Show details</a>
-
+        <a href="/posts/{{this._id}}" id="username"> Show details</a>
       </li>
-      </div>
      </div>
       {{/each}}
   </ul>

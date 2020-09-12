@@ -53,8 +53,26 @@ a {
   font-size: 1.5em;
 }
 
+#aviAndUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin: 10px;
+}
+
+#aviAndUser img {
+  margin-right: 10px;
+}
+
 #content {
   width: 30%;
+}
+
+#eachPost {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0px;
 }
 
 #form form {
@@ -157,6 +175,10 @@ ul li {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+#username {
+  font-size: medium;
 }
 
 .userPosts {
