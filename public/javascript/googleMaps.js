@@ -1,3 +1,5 @@
+const { default: Axios } = require("axios");
+
 function initMap() {
     const map = new google.maps.Map(document.getElementById('map'), {
         zoom: 8,
@@ -22,4 +24,9 @@ function geocodeAddress(geocoder, resultMap) {
             alert('Geocode was not successful for the following reason:' + status);
         }
     });
+}
+
+function geocode(){
+    Axios.get('https://maps.googleapis.com/maps/api/geocode/json');
+        
 }

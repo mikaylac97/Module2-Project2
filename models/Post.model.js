@@ -8,11 +8,14 @@ const postSchema = new Schema(
     comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
     tags: [{ type: String }],
     imageUrl: { type: String },
-    location: { type: String }
+    location: { type: { type: String }, coordinates: [Number] }
   },
   {
     timestamps: true
   }
 );
+
+postSchema.index({ location: '2dsphere' });
+
 
 module.exports = model('Post', postSchema)
