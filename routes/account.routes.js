@@ -60,7 +60,9 @@ router.post('/account-edit', fileUploader.single('image'), (req, res, next) => {
         });
 });
 
-
+router.post('/delete-account', (req, res, next) => {
+    
+})
 
 
 module.exports = router;

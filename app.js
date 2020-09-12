@@ -37,6 +37,8 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+
+// Routes middleware
 app.use(express.static(path.join(__dirname, 'public'))); 
 app.use(logger('dev'));
 app.use(express.json());
@@ -49,7 +51,8 @@ app.use(bindUserToViewLocals);
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-// Routes middleware
+
+// Routes
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use(require('./configs/route-guard.config.js'))
