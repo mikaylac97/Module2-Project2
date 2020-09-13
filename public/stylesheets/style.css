@@ -53,8 +53,26 @@ a {
   font-size: 1.5em;
 }
 
+#aviAndUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin: 10px;
+}
+
+#aviAndUser img {
+  margin-right: 10px;
+}
+
 #content {
   width: 30%;
+}
+
+#eachPost {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0px;
 }
 
 #form form {
@@ -144,7 +162,6 @@ form button:hover {
 ul {
   /* border-bottom: 2px solid #43a3e6; */
   height: 30px;
-  padding: 1em 0;
   list-style-type: none;
 }
 
@@ -157,6 +174,10 @@ ul li {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+#username {
+  font-size: medium;
 }
 
 .userPosts {
@@ -251,3 +272,260 @@ ul li {
   font-weight: bold;
   font-size: 2em;
 }
+
+
+/* BOOTSTRAP TIMELINE */
+
+.main-section {
+  float: left;
+  width: 100%;
+}
+
+.no-pd {
+  padding: 0;
+}
+
+
+.pd-left-none {
+  padding-left: 0;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.main-left-sidebar {
+  float: left;
+  width: 100%;
+}
+
+
+.user-data {
+  text-align: center;
+}
+
+.user-fw-status {
+  float: left;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0px;
+}
+
+.user-specs {
+  float: left;
+  width: 100%;
+  padding: 63px 0 27px 0;
+}
+
+.full-width {
+  float: left;
+  width: 100%;
+  height: 450px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  border-left: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.user-profile {
+  float: left;
+  width: 100%;
+}
+
+.username-dt {
+  float: left;
+  width: 100%;
+  background-color: #e44d3a;
+  padding-top: 40px;
+  height: 100px;
+}
+
+.usr-pic {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto;
+  margin-bottom: -48px;
+}
+
+.usr-pic > img {
+  float: none;
+  border: 5px solid #fff;
+  width: 100px;
+  height: 100px;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.main-section-data {
+  float: left;
+  width: 100%;
+}
+
+.posts-section {
+  float: left;
+  width: 100%;
+}
+
+
+.post-bar {
+  float: left;
+  width: 100%;
+  background-color: #fff;
+  border-left: 1px solid #e4e4e4;
+  border-right: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0px 2px #e4e4e4;
+}
+
+.post_topbar {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
+.usy-dt {
+  float: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.usy-name {
+  float: left;
+  margin-left: 15px;
+}
+
+
+.usy-name h3 {
+  color: #000000;
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 600;
+  margin-bottom: 5px;
+  margin-top: 2px;
+}
+
+.job_descp {
+  float: left;
+  width: 100%;
+}
+
+.job_descp h3 {
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.job_descp a {
+  color: #333;
+  font-size: 16px;
+}
+
+.job_descp p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+
+.job-status-bar {
+  border-top: 1px solid #e5e5e5;
+  float: left;
+  width: 100%;
+}
+
+.main-ws-sec {
+  float: left;
+  width: 150%;
+}
+
+.post-topbar {
+  float: left;
+  width: 100%;
+  padding: 23px 20px;
+  background-color: #fff;
+  border-top: 4px solid #e44d3a;
+  border-left: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  border-right: 1px solid #e4e4e4;
+  box-shadow: 0 0 1px rgba(0,0,0,0.24);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.post-st {
+  float: right;
+  margin-top: 5px;
+}
+
+.post-st ul li {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.post-st ul li a {
+  color: #b2b2b2;
+  font-size: 16px;
+  background-color: #e5e5e5;
+  height: 40px;
+  padding: 20px 15px;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+main {
+  width: 100%;
+  padding: 60px 0;
+}
+
+.col-lg-3, .col-md-4, .col-lg-6, .col-md-8 {
+
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+
+}  
+
+.like-com {
+  float: left;
+  margin-top: 20px;
+}
+
+.like-com li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.like-com li a {
+  color: #b2b2b2;
+  font-size: 14px;
+  font-weight: 500;
+  float: left;
+  margin-right: 7px;
+}
+
+
+
