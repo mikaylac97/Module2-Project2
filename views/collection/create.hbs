@@ -1,0 +1,26 @@
+<div id='form'>
+    <h2>Create a collection</h2>
+    <form action="/account-edit" method='POST'  enctype="multipart/form-data">
+        <label>Title
+            <input type="text" name="title"  placeholder="Enter title" />
+        </label>
+ 
+
+        <label>Description
+            <input type="text" name="description" placeholder="Enter a description for the collection" />
+        </label>
+
+       <label>tags
+            <input type="text" name="tags" placeholder="Enter some tags" />
+        </label>
+        
+        <label>Collection Photo
+            <input type="file" name="image" />
+        </label>
+
+        <button type='submit'>Create Collection</button>
+
+        {{#if errorMessage}}
+            <p class='error'>{{errorMessage}}</p>
+        {{/if}}
+    </form>

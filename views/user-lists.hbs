@@ -1,0 +1,37 @@
+<h3>All the Users</h3>
+<h1>Hello {{user.username}}</h1>
+<ul>
+    {{#each newData}}
+      <li>
+        Name: {{this.firstname}} {{this.lastname}}
+        Email: {{this.email}}
+
+
+            {{#if isFollowing}}
+                <h3>You're already following</h3>
+                <div id='unFollowForm'>
+                  <form action="/follow/{{_id}}" method='POST'>
+                  <button type='submit'>Un-Follow</button>
+                  {{#if errorMessage}}
+                  <p class='error'>{{errorMessage}}</p>
+                  {{/if}}
+                  </form>
+                </div>
+            {{else}}
+                <h3>You are not following this user</h3>
+                <div id='followForm'>
+                  <form action="/follow/{{_id}}" method='POST'>
+                  <button type='submit'>Follow</button>
+                  {{#if errorMessage}}
+                  <p class='error'>{{errorMessage}}</p>
+                  {{/if}}
+                  </form>
+                </div>
+            {{/if}}
+
+                
+
+                
+      </li>
+    {{/each}}
+</ul>

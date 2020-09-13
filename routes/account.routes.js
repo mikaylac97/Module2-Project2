@@ -7,10 +7,21 @@ const User = require('../models/User.model');
 const routeGuard = require('../configs/route-guard.config');
 const fileUploader = require('../configs/cloudinary.configs');
 
-//.get route to get the account details edit page
-router.get('/account', (req, res, next) => {
 
-    res.render('account/account.hbs')
+
+
+//get route to get the account details edit page
+router.get('/account/:accountId', (req, res, next) => {
+    User.findById(req.params.accountId)
+    .then(user => {
+        console.log("This is the user", user)
+        const authorized =  req.session.loggedInUser._id.toString() === user._id.toString()
+        console.log(authorized)
+        res.render('account/account.hbs', {user: user, authorized})
+
+    }).catch(err => {`Error finding user in database${err}`})
+
+    
 })
 
 //.post route to edit the account details page
@@ -60,7 +71,33 @@ router.post('/account-edit', fileUploader.single('image'), (req, res, next) => {
         });
 });
 
+router.post('/delete-account', (req, res, next) => {
+    User.find()
+    .then(usersInDb => {
+        usersInDb.forEach(user => {
+            let indexToDelete = user.followers.indexOf(req.session.loggedInUser._id.toString())
+             console.log("index of user to delete", indexToDelete);
+            // console.log("each users followers array", user.followers);
+            // console.log("the session of the", indexToDelete);
+            user.followers.splice(indexToDelete,1) 
 
+            user.save()
+            .then(updatedUsers => {
+                // console.log('this id should not be in the followers list anymore', req.session.loggedInUser._id)
+                // console.log("the updated users followers list", updatedUsers.followers)
+            }).catch(err => {console.log(`Error saving the updated users${err}`)})
+
+        })
+            User.findByIdAndDelete(req.session.loggedInUser._id)
+            .then(userThatWasDeleted => {
+                console.log("The user that was deleted is: ", userThatWasDeleted)
+                req.session.destroy();
+                res.redirect('/');
+            }).catch(err => {console.log(`Error deleting user: ${err}`)})
+
+    }).catch(err => console.log(`Error deleting the user from the other users followers array: ${err}`))
+   
+})
 
 
 module.exports = router;
