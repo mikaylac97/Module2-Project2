@@ -22,7 +22,6 @@ router.get('/collection/:collectionId', (req, res, next) => {
 })
 
 //post route to delete post from collection
-
 router.post('/delete-from-collection/:postId/:collectionId', (req, res, next) => {
     //console.log('this is the post id', req.params.postId)
     //console.log('this is the collection id', req.params.collectionId)
@@ -50,9 +49,9 @@ router.post('/delete-from-collection/:postId/:collectionId', (req, res, next) =>
 })
 
 
-//get route to retrieve the collections page
-router.get('/collections', (req, res, next) =>{
-    User.findById(req.session.loggedInUser._id)
+//get route to retrieve the collections page of a certain user
+router.get('/collections/:userId', (req, res, next) =>{
+    User.findById(req.params.userId)
     .populate('collections')
     .populate({
         path: 'collections',
@@ -61,12 +60,16 @@ router.get('/collections', (req, res, next) =>{
         }
     })
     .then(collectionsFromDb => {
-        //console.log(collectionsFromDb.collections);
+        console.log({collections : collectionsFromDb.collections});
         res.render('collection/collection.hbs', {collections : collectionsFromDb.collections});
     })
-    .catch(err=> {
-        console.log(`Error finding specific user: ${err}`)
-    })
+    .catch(err=> {console.log(`Error finding specific user: ${err}`)})
+    // User.findById(req.params.userId)
+    // .populate('collections')
+    // .then(user => {
+    //     console.log(user);
+    //     res.render('collection/collection.hbs', user);
+    // }).catch(err=> {console.log(`Error finding specific user: ${err}`)})
 })
 
 
@@ -100,7 +103,7 @@ router.post('/create-collection', fileUploader.single('image'), (req, res, next)
         .then(user => {
             //console.log(user);
             //console.log(`The new collection ${newCollectionInDb}`)
-            res.redirect('/collections')
+            res.redirect(`/collections/${req.session.loggedInUser._id}`)
         })      
       })
       .catch(err => console.log(`Error while creating a new collection: ${err}`));
@@ -147,12 +150,21 @@ router.post('/add-to-collection/:postId', (req, res, next) => {
 //post route to delete collections
 router.post('/delete-collection/:collectionId', (req, res, next) => {
     console.log(req.params.collectionId)
+    User.findById(req.session.loggedInUser._id)
+    .then(user => {
+        let index = user.collections.indexOf(req.params.collectionId.toString());
+        user.collections.splice(index, 1);
+            user.save()
+            .then(updatedUser=> {
+                console.log(`The updated user with the deleted collection: ${updatedUser}`)
+            }).catch(err=>{console.log(`Error deleting collection from user data: ${err}`)})
+        }).catch(err=> {`Error finding user in database: ${err}`})
+
     Collection.findByIdAndDelete(req.params.collectionId)
     .then(deletedCollection => {
         console.log('this is the deleted collection', deletedCollection)
-        res.redirect('/collections');
-    })
-    .catch(err=> {`Error deleting collection: ${err}`})
+        res.redirect(`/collections/${req.session.loggedInUser._id}`);
+    }).catch(err=> {`Error deleting collection: ${err}`})
 })
 
 

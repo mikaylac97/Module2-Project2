@@ -26,6 +26,7 @@ const searchRouter = require('./routes/search.routes');
 const accountRouter = require('./routes/account.routes')
 const collectionRouter = require('./routes/collection.routes');
 const followRouter = require('./routes/follow.routes');
+const likeRouter = require('./routes/likes.routes')
 
 
 
@@ -63,6 +64,7 @@ app.use('/', searchRouter);
 app.use('/', accountRouter);
 app.use('/', collectionRouter);
 app.use('/', followRouter);
+app.use('/', likeRouter);
 
 
 // Catch missing routes and forward to error handler

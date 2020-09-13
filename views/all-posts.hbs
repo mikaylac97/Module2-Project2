@@ -12,12 +12,12 @@
         <p>{{this.title}}</p>
         <a href="/posts/{{this._id}}"> Show details</a>
 
-      <!-- This is the likes button 
-        {{#if isFollowing}}
+      
+        {{#if isPostLiked}}
               
                 <div class ='likeButton'>
-                  <form action="/like/{{this._id}}" method='POST'>
-                  <button type='submit'>Like</button>
+                  <form action="/like/{{_id}}" method='POST'>
+                  <button type='submit'>Unlike</button>
                   {{#if errorMessage}}
                   <p class='error'>{{errorMessage}}</p>
                   {{/if}}
@@ -26,8 +26,8 @@
             {{else}}
                 
                 <div class ='likeButton'>
-                  <form action="/like/{{this._id}}" method='POST'>
-                  <button type='submit'>Unlike</button>
+                  <form action="/like/{{_id}}" method='POST'>
+                  <button type='submit'>Like</button>
                   {{#if errorMessage}}
                   <p class='error'>{{errorMessage}}</p>
                   {{/if}}
@@ -35,7 +35,7 @@
                 </div>
             {{/if}}
 
-            -->
+            
 
       </li>
       </div>

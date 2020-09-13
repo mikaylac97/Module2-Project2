@@ -1,7 +1,7 @@
 <h3>this is the account page for {{user.username}}</h3>
 
 
-
+{{#if authorized}}
 
 <div id='form'>
     <h2>Account Information</h2>
@@ -37,3 +37,24 @@
         {{/if}}
     </form>
 </div>
+
+<form action="/delete-account" method="POST">
+    <button type='submit'>Delete Account</button>
+</form>
+
+
+{{else}}
+
+<h2>Account Information</h2>
+    <ul>
+        <li>First Name: {{user.firstname}}</li>
+        <li>Last Name: {{user.lastname}}</li>
+        <li>User Name: {{user.username}}</li>
+        <li>Email: {{user.email}}</li>
+
+
+    </ul>
+
+
+{{/if}}
+

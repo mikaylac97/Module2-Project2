@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = new Router();
 const mongoose = require('mongoose');
 const User = require('../models/User.model');
-//const isFollowing = false;
+
 
 
 //get route to show all the users on the site
@@ -13,13 +13,10 @@ router.get('/user-list', (req, res, next) => {
         const data = {
              newData: []
         };
-      
-            
             usersFromDb.forEach(user => {
                 console.log({currentUser: req.session.loggedInUser.following, user: user._id})
-                
                     //console.log(user.isFollowing =  req.session.loggedInUser.following.includes(user._id.toString()));
-            user.isFollowing =  req.session.loggedInUser.following.includes(user._id.toString()) ? true : false;
+                user.isFollowing =  req.session.loggedInUser.following.includes(user._id.toString()) ? true : false;
                     //console.log(user.isFollowing)
                     //let newDataEntry = user;
                     //newDataEntry.isFollowing = req.session.loggedInUser.following.includes(user._id.toString());
@@ -34,6 +31,7 @@ router.get('/user-list', (req, res, next) => {
             // })
        // console.log('this is the new datat', usersFromDb)
        // console.log({data: data.newData});
+             console.log(data)
         res.render('user-lists.hbs', data);
     })
     .catch(err =>{console.log(`Error finding users from database${err}`)})
@@ -91,7 +89,7 @@ router.post('/follow/:personToFollowsId', (req, res, next) => {
           : userToFollow.followers.push(req.session.loggedInUser._id);
       userToFollow.save()
       .then(updatedUserToFollow => {
-          console.log({updatedUserToFollow});
+          //console.log({updatedUserToFollow});
         User.findById(req.session.loggedInUser._id)
             .then((currentUser) => {
                 currentUser.following.includes(req.params.personToFollowsId)
@@ -102,7 +100,7 @@ router.post('/follow/:personToFollowsId', (req, res, next) => {
                 currentUser
                     .save()
                     .then((updatedCurrentUser) => {
-                        console.log({ updatedCurrentUser });
+                        //console.log({ updatedCurrentUser });
                         res.redirect("/user-list");
                     }).catch((err) => next(err));
             }).catch((err) => next(err));

@@ -37,8 +37,8 @@
               <p>@{{user.username}}</p>
               <a href="/user/{{user._id}}">Profile</a>
               <a href="/post-create">Add a post</a>
-              <a href="/collections">Collections</a>
-              <a href="/account">Account Details</a>
+              <a href="/collections/{{user._id}}">Collections</a>
+              <a href="/account/{{user._id}}">Account Details</a>
               <form id="logout-form" action="/logout" method="POST">
               <button>Logout</button>
             </form>
