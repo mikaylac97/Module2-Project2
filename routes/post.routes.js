@@ -1,35 +1,49 @@
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 const fileUploader = require('../configs/cloudinary.configs');
 const Post = require('../models/Post.model');
 const Comment = require('../models/Comment.model');
 const User = require('../models/User.model');
-
-
 
 //Get route to render a form for users to create a new post
 router.get('/post-create', (req, res) => res.render('posts/create'));
 
 //Post route to save the new post in the Database
 router.post('/post-create', fileUploader.single('image'), (req, res, next) => {
-  const { title, content, tags } = req.body;
+  const { title, content, tags, location } = req.body;
   const separatedTags = tags.split(' ');
-  
-  console.log(separatedTags);
-  Post.create({
-    title,
-    content,
-    author: req.session.loggedInUser._id,
-    tags: separatedTags,
-    imageUrl: req.file.path
-  })
-  .then(postDocFromDB => {
-    User.findByIdAndUpdate(req.session.loggedInUser._id, {$push: {posts: postDocFromDB._id}}, {new: true}) //{posts : [...req.user.posts, postDocFromDB._id]})
-    .then(user => {
-      res.redirect('/posts')
+  let longitude = 0;
+  let latitude = 0;
+
+  axios
+    .get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyBewseqyTOFrXo5QzeUi1Zj9nsoEoMvHRw&callback`)
+    .then(response =>{
+      console.log('Response from google data results:' + response.data.results[0].geometry.location.lng);
+      console.log('Response from google data results:' + response.data.results[0].geometry.location.lat);
+      longitude = response.data.results[0].geometry.location.lng;
+      latitude = response.data.results[0].geometry.location.lat;
+      
+      Post.create({
+        title,
+        content,
+        author: req.session.loggedInUser._id,
+        tags: separatedTags,
+        imageUrl: req.file.path,
+        location: {
+          type: 'Point',
+          coordinates: [longitude, latitude]
+        }
+      })
+      .then(postDocFromDB => {
+        User.findByIdAndUpdate(req.session.loggedInUser._id, {$push: {posts: postDocFromDB._id}}, {new: true}) //{posts : [...req.user.posts, postDocFromDB._id]})
+        .then(user => {
+          res.redirect('/posts')
+        })
+      })
+      .catch(err => console.log(`Error while creating a new post: ${err}`));
     })
-  })
-  .catch(err => console.log(`Error while creating a new post: ${err}`));
+    .catch(err =>{ `Error while requesting Geocode location from API: ${err}`});
 });
 
 //get route to display all posts
