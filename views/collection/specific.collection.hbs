@@ -1,1 +1,45 @@
-<h2>This is the specific collections page</h2>
+<h2>This is the {{this.title}} collections page</h2>
+
+
+
+
+  {{#if posts}}
+  <ul>
+    {{#each posts}}
+      <li>
+        Title: {{this.title}}
+         <div id='form'>
+            <form action="/delete-from-collection/{{this._id}}/{{../this.id}}" method='POST'>
+              
+            <button type='submit'>Delete from collection</button>
+            {{#if errorMessage}}
+             <p class='error'>{{errorMessage}}</p>
+             {{/if}}
+            </form>
+        </div>
+        
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>This collection contains no posts!</p>
+{{/if}}
+
+
+
+
+
+<div id="delete-collection">
+  <form action="/delete-collection/{{this.id}}" method='POST'>
+       
+     <button type='submit'>Delete this collection?</button>
+     {{#if errorMessage}}
+      <p class='error'>{{errorMessage}}</p>
+      {{/if}}
+    </form>
+</div>
+     
+
+
+
+

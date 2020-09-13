@@ -1,6 +1,117 @@
-<h1>this is the user's profile</h1>
 
-<h2>{{user.username}}</h2>
+<section class="cover-sec">
+  <img src="">
+    <div class="add-pic-box">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-lg-12 col-sm-12">
+            {{#if authorized}}
+            <label for="file">Change Theme</label>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<main>
+  <div class="main-section">
+    <div class="container">
+      <div class="main-section-data">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="main-left-sidebar">
+              <div class="user_profile">
+                <div class="user-pro-img">
+                  <img src="{{user.profilePhotoUrl}}">
+                  {{#if authorized}}
+                  <div class="add-dp" id="OpenImgUpload">
+                    <input type="file" id="file">
+                      <label for="file">
+                        <i class="fas fa-plus"></i>
+                      </label>
+                  </div>
+                  {{/if}}
+                </div>
+                <!-- profile img end -->
+                <div class="user_pro_status">
+                  <ul class="flw-status">
+                    <li>
+                      <span>Following</span>
+                      <b>24</b>
+                    </li>
+                    <li>
+                      <span>Followers</span>
+                      <b>42</b>
+                    </li>
+                  </ul>
+                </div>
+                <!-- followers/following end -->
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            {{!-- {{#unless user.posts}}
+                <p>No posts yet! Go to nav bar to create a post.</p>
+            {{/unless}} --}}
+            <div class="main-ws-sec">
+              <div class="product-feed-tab current" id="feed-dd">
+                <div class="posts-section">
+                  {{#each user.posts}}
+                  <div class="post-bar">
+                    <div class="post_topbar">
+                      <div class="usy-dt">
+                        <img src="{{this.author.profilePhotoUrl}}" class="userAvatar">
+                        <div class="usy-name">
+                          <h3>{{this.author}}</h3>
+                          <span>
+                            when the post was posted
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="job_descp">
+                      <h3>{{this.title}}</h3>
+                      <img src={{this.imageUrl}} id="content">
+                      <p><a href="/posts/{{this._id}}">Show Details</a></p>
+                    </div>
+                    <div class="job-status-bar">
+                       <ul class="like-com">
+                        <li>
+                        <a href="#">
+                          <i class="far fa-thumbs-up"></i>
+                          <span>Like</span>
+                        </a>
+                          <span>24</span>
+                      </li>
+                      <li>
+                        <a href="#" class="com">
+                          <i class="far fa-comments"></i>
+                          <span>Comment</span>
+                        </a>
+                        <span>42</span>
+                      </li>
+                    </ul>
+                    </div>
+                  </div>
+                  {{/each}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+
+
+{{!-- <h2>{{user.username}}</h2>
 <div>
 {{#if authorized}}
 <a href="/account">Account Information</a>
@@ -28,4 +139,4 @@
   <img src="{{this.imageUrl}}" class="portrait">
   </a>
  {{/each}} 
-</div>
+</div> --}}

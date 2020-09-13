@@ -8,7 +8,8 @@ const postSchema = new Schema(
     comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
     tags: [{ type: String }],
     imageUrl: { type: String },
-    location: { type: { type: String }, coordinates: [Number] }
+    location: { type: { type: String }, coordinates: [Number] },
+    isPostLiked: {type: Boolean},
   },
   {
     timestamps: true

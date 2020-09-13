@@ -1,0 +1,48 @@
+<h2>Posts</h2>
+
+{{#if posts}}
+
+  <ul>
+      {{#each posts}}
+    <div id="timeline">
+      <div>
+      <li>
+        <img src="{{this.author.profilePhotoUrl}}" class="userAvatar"><a href="/user/{{this.author._id}}">{{this.author.username}}</a>
+        <img src="{{this.imageUrl}}" id="content" alt="{{this.title}}">
+        <p>{{this.title}}</p>
+        <a href="/posts/{{this._id}}"> Show details</a>
+
+      
+        {{#if isPostLiked}}
+              
+                <div class ='likeButton'>
+                  <form action="/like/{{_id}}" method='POST'>
+                  <button type='submit'>Unlike</button>
+                  {{#if errorMessage}}
+                  <p class='error'>{{errorMessage}}</p>
+                  {{/if}}
+                  </form>
+                </div>
+            {{else}}
+                
+                <div class ='likeButton'>
+                  <form action="/like/{{_id}}" method='POST'>
+                  <button type='submit'>Like</button>
+                  {{#if errorMessage}}
+                  <p class='error'>{{errorMessage}}</p>
+                  {{/if}}
+                  </form>
+                </div>
+            {{/if}}
+
+            
+
+      </li>
+      </div>
+     </div>
+      {{/each}}
+  </ul>
+ 
+{{else}}
+  <p>No posts yet!</p>
+{{/if}}

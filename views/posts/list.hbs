@@ -1,23 +1,127 @@
-<h2>Posts</h2>
 
-{{#if posts}}
+
+<main>
+<div class="main-section">
+  <div class="container">
+    <div class="main-section-data">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+          <div class="main-left-sidebar no-margin">
+            <div class="user-data full-width">
+              <div class="user-profile">
+                <div class="username-dt">
+                  {{#if user}}
+                    <div class="usr-pic">
+                    <img src="{{user.profilePhotoUrl}}" class="userAvatar">
+                    </div>
+                    <div class="user-specs">
+                    <h3>{{user.firstname}} {{user.lastname}}</h3>
+                    <span>This could be a bio here</span>
+                    </div>
+                    <ul class="user-fw-status">
+                        <li>
+                          <h4>Following</h4>
+                          <span>#ofFollowing</span>
+                        </li>
+                        <li>
+                          <h4>Followers</h4>
+                          <span>#ofFollowers</span>
+                        </li>
+                    </ul>
+                    {{/if}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<div class="col-lg-6 col-md-8 no-pd">
+  <div class="main-ws-sec">
+    <div class="post-topbar">
+      <div class="user-picy">
+        <img src="{{user.profilePhotoUrl}}" class="userAvatar">
+      </div>
+      <div class="post-st">
+        <ul>
+          <li>
+            <a class="make_post" href="/post-create">Create a Post</a>
+          </li>
+          <li>
+            <a class="make_collection" href="/create-collection">Create a Collection</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+   {{#if posts}}
+    <div class="posts-section">
+      {{#each posts}}
+      <div class="post-bar">
+        <div class="post_topbar">
+          <div class="usy-dt">
+            <img src={{this.author.profilePhotoUrl}} alt="user profile picture" class="userAvatar">
+            <div class="usy-name">
+              <h3><a href="/user/{{this.author._id}}">{{this.author.username}}</a></h3>
+              <span>When the post was posted</span>
+            </div>
+          </div>
+        </div>
+        <div class="job_descp">
+          <h3>{{this.title}}</h3>
+          <img src={{this.imageUrl}} id="content">
+          <p><a href="/posts/{{this._id}}">Show Details</a></p>
+        </div>
+        <div class="job-status-bar">
+          <ul class="like-com">
+            <li>
+              <a href="#">
+                <i class="far fa-thumbs-up"></i>
+                <span>Like</span>
+              </a>
+              <span>24</span>
+            </li>
+            <li>
+              <a href="#" class="com">
+                <i class="far fa-comments"></i>
+                <span>Comment</span>
+              </a>
+              <span>42</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+{{/if}}
+
+
+
+{{!-- {{#if posts}}
 
   <ul>
       {{#each posts}}
     <div id="timeline">
-      <div>
-      <li>
-        <img src="{{this.author.profilePhotoUrl}}" class="userAvatar"><a href="/user/{{this.author._id}}">{{this.author.username}}</a>
+      <li id="eachPost">
+        <div id="aviAndUser">
+        <img src="{{this.author.profilePhotoUrl}}" class="userAvatar"><a href="/user/{{this.author._id}}" id="username">{{this.author.username}}</a>
+        </div>
         <img src="{{this.imageUrl}}" id="content" alt="{{this.title}}">
         <p>{{this.title}}</p>
-        <a href="/posts/{{this._id}}"> Show details</a>
-
+        <a href="/posts/{{this._id}}" id="username"> Show details</a>
       </li>
-      </div>
      </div>
       {{/each}}
   </ul>
  
 {{else}}
   <p>No posts yet!</p>
-{{/if}}
+{{/if}} --}}
+
+</div>
+</div>
+</div>
+</div>
+
+</main>

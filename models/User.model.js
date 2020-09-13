@@ -45,6 +45,12 @@ const userSchema = new Schema(
         passwordHash: {
             type: String,
             required: [true, 'Password is required.']
+        },
+        likes: [{
+            type: Schema.Types.ObjectId, ref :'Post'
+        }],
+        isFollowing: {
+            type: Boolean
         }
     },
     {

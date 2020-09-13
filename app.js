@@ -25,6 +25,8 @@ const commentRouter = require('./routes/comment.routes');
 const searchRouter = require('./routes/search.routes');
 const accountRouter = require('./routes/account.routes')
 const collectionRouter = require('./routes/collection.routes');
+const followRouter = require('./routes/follow.routes');
+const likeRouter = require('./routes/likes.routes')
 
 
 
@@ -36,6 +38,8 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+
+// Routes middleware
 app.use(express.static(path.join(__dirname, 'public'))); 
 app.use(logger('dev'));
 app.use(express.json());
@@ -48,7 +52,8 @@ app.use(bindUserToViewLocals);
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-// Routes middleware
+
+// Routes
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use(require('./configs/route-guard.config.js'))
@@ -58,6 +63,8 @@ app.use('/', userRouter);
 app.use('/', searchRouter);
 app.use('/', accountRouter);
 app.use('/', collectionRouter);
+app.use('/', followRouter);
+app.use('/', likeRouter);
 
 
 // Catch missing routes and forward to error handler
