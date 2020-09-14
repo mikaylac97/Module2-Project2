@@ -5,7 +5,7 @@ const Collection = require('../models/Collections.model');
 const User = require('../models/User.model');
 const { route } = require('./post.routes');
 
-//GET home page
+// //GET home page
 // router.post('/search', (req,res, next) => {
 //     const { searchQuery } = req.body;
 //     console.log(searchQuery)
@@ -50,46 +50,50 @@ const { route } = require('./post.routes');
 //get route to get the search results 
 router.get('/search', (req, res, next) => {
 //console.log(req.query.search)
-const searchQuery = req.query.search.split(" ");
-let response = [];
-searchQuery.forEach(elem => {
-    console.log("This is  a new elem", elem);
+//const searchQuery = req.query.search.split(" ");
+const searchQuery = req.query.search;
+//const searchQuery = search.map(searchQuery => searchQuery.toLowerCase());
+//console.log("this is the search query", searchQuery);
+//let data = [];
+
+    console.log("This is  a new searchQuery", searchQuery);
     Post.find({ 
                 $or:[ 
-                    {tags: elem},
-                    {title: elem},
-                    {content: elem},
-                    {location: elem}
+                    {tags: searchQuery},
+                    {title: searchQuery},
+                    {content: searchQuery},
+                    {location: searchQuery}
                 ]
     })
     .then(postsFromDB => {
-        response.push("This is in the post find", postsFromDB);
-        console.log(response);
-    }).catch(err =>{console.log(`Error finding posts: ${err}`)})
-    User.find({ 
-        $or:[ 
-            {username: elem},
-            {firstname: elem},
-            {lastname: elem}
-        ]
-    })
-    .then(userFromDB => {
-        response.push(userFromDB);
-        console.log("This is in the user find", response);
-    }).catch(err =>{console.log(`Error finding Users: ${err}`)})
-    Collection.find({ 
-        $or:[ 
-            {title: elem},
-            {description: elem}
-        ]
-    })
-    .then(collectionFromDB => {
-        response.push(collectionFromDB);
-        console.log("This is in the collection find", response);
-    }).catch(err =>{console.log(`Error finding Collections: ${err}`)})
+       // data.push({postsFromDB});
+        //console.log(response);
+        User.find({ 
+                $or:[ 
+                    {username: searchQuery},
+                    {firstname: searchQuery},
+                    {lastname: searchQuery}
+                ]
+            })
+            .then(userFromDB => {
+                //data.push({userFromDB});
+            // console.log("This is in the user find", response);
+                Collection.find({ 
+                    $or:[ 
+                        {title: searchQuery},
+                        {description: searchQuery}
+                    ]
+                })
+                .then(collectionFromDB => {
+                   // data.push( {collectionFromDB} );
+                    //console.log("This is in the collection find", {data: postsFromDB, userFromDB, collectionFromDB});
+                    console.log("this is the final data",{postSearch: postsFromDB, userSearch: userFromDB, collectionSearch: collectionFromDB})
+                    res.render('posts/search', {postSearch: postsFromDB, userSearch: userFromDB, collectionSearch: collectionFromDB});
+                }).catch(err =>{console.log(`Error finding Collections: ${err}`)})
+            }).catch(err =>{console.log(`Error finding Users: ${err}`)})
+        }).catch(err =>{console.log(`Error finding posts: ${err}`)})
+    
 
-
-})
 
 
 })
