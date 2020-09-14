@@ -1,19 +1,3 @@
-
-<section class="cover-sec">
-  <img src="">
-    <div class="add-pic-box">
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="col-lg-12 col-sm-12">
-            {{#if authorized}}
-            <label for="file">Change Theme</label>
-            {{/if}}
-          </div>
-        </div>
-      </div>
-    </div>
-</section>
-
 <main>
   <div class="main-section">
     <div class="container">
@@ -27,9 +11,9 @@
                   {{#if authorized}}
                   <div class="add-dp" id="OpenImgUpload">
                     <input type="file" id="file">
-                      <label for="file">
-                        <i class="fas fa-plus"></i>
-                      </label>
+                    <label for="file">
+                      <i class="fas fa-plus"></i>
+                    </label>
                   </div>
                   {{/if}}
                 </div>
@@ -46,6 +30,9 @@
                     </li>
                   </ul>
                 </div>
+                {{#if authorized}}
+                <a href="/account">Account Information</a>
+                {{/if}}
                 <!-- followers/following end -->
               </div>
             </div>
@@ -63,7 +50,7 @@
                       <div class="usy-dt">
                         <img src="{{this.author.profilePhotoUrl}}" class="userAvatar">
                         <div class="usy-name">
-                          <h3>{{this.author}}</h3>
+                          <h3>{{this.author.username}}</h3>
                           <span>
                             when the post was posted
                           </span>
@@ -76,22 +63,22 @@
                       <p><a href="/posts/{{this._id}}">Show Details</a></p>
                     </div>
                     <div class="job-status-bar">
-                       <ul class="like-com">
+                      <ul class="like-com">
                         <li>
-                        <a href="#">
-                          <i class="far fa-thumbs-up"></i>
-                          <span>Like</span>
-                        </a>
+                          <a href="#">
+                            <i class="far fa-thumbs-up"></i>
+                            <span>Like</span>
+                          </a>
                           <span>24</span>
-                      </li>
-                      <li>
-                        <a href="#" class="com">
-                          <i class="far fa-comments"></i>
-                          <span>Comment</span>
-                        </a>
-                        <span>42</span>
-                      </li>
-                    </ul>
+                        </li>
+                        <li>
+                          <a href="#" class="com">
+                            <i class="far fa-comments"></i>
+                            <span>Comment</span>
+                          </a>
+                          <span>42</span>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                   {{/each}}

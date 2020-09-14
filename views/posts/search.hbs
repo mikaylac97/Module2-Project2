@@ -1,4 +1,88 @@
-<div>
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="col-lg-6">
+                    {{!-- {{#unless user.posts}}
+                <p>No posts yet! Go to nav bar to create a post.</p>
+            {{/unless}} --}}
+                    <div class="main-ws-sec">
+                        <div class="product-feed-tab current" id="feed-dd">
+                            <div class="posts-section">
+                                <h3>Posts</h3>
+                                {{#if searchResult}}
+                                {{#each searchResult}}
+                                <div class="post-bar">
+                                    <div class="post_topbar">
+                                        <div class="usy-dt">
+                                            <img src="{{author.profilePhotoUrl}}" class="userAvatar">
+                                            <div class="usy-name">
+                                                <h3>{{author.username}}</h3>
+                                                <span>
+                                                    when the post was posted
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="job_descp">
+                                        <h3>{{title}}</h3>
+                                        <img src={{imageUrl}} id="content">
+                                        <p><a href="/posts/{{_id}}">Show Details</a></p>
+                                    </div>
+                                    <div class="job-status-bar">
+                                        <ul class="like-com">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="far fa-thumbs-up"></i>
+                                                    <span>Like</span>
+                                                </a>
+                                                <span>24</span>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="com">
+                                                    <i class="far fa-comments"></i>
+                                                    <span>Comment</span>
+                                                </a>
+                                                <span>42</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                {{/each}}
+                                {{else}}
+                                <p>No posts found</p>
+                                {{/if}}
+                            </div>
+                            <h2>Users</h2>
+                            {{#if userSearchResult}}
+                            {{#each userSearchResult}}
+                            <h4>User: {{username}}</h2>
+                                <img src="{{profilePhotoUrl}}" alt="{{username}}" class="userAvatar">
+                                <a href="user/{{_id}}">User Profile</a>
+                                {{/each}}
+                                {{else}}
+                                <p>No Users found</p>
+                                {{/if}}
+                                <h2>Collections</h2>
+                                {{#if collection}}
+                                {{#each collection}}
+                                <h4>Collection's Title: {{title}}</h2>
+                                    <p>{{description}}</p>
+                                    {{/each}}
+                                    {{else}}
+                                    <p>No Collections found</p>
+                                    {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+
+
+{{!-- <div>
     <h2>Search Results</h2>
 </div>
 
@@ -37,4 +121,4 @@
     {{else}}
         <p>No Collections found</p>
     {{/if}}
-</div>
+</div> --}}
