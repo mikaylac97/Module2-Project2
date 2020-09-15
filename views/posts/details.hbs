@@ -1,4 +1,86 @@
-<h2>{{ post.title }}</h2>
+<main>
+  <div class="main-section">
+    <div class="container">
+      <div class="main-section-data">
+        {{!-- <div class="row">
+          <div class="col-xl-9 col-lg-9 col-md-12"> --}}
+        <div class="main-cm-sec">
+          <div class="posts-section">
+            <div class="post-bar">
+              <div class="post_topbar">
+                <div class="usy-dt">
+                  <img src={{post.author.profilePhotoUrl}} alt="user profile picture" class="userAvatar">
+                  <div class="usy-name">
+                    <h3><a href="/user/{{post.author._id}}">{{post.author.username}}</a></h3>
+                    <span>When the post was posted</span>
+                  </div>
+                </div>
+              </div>
+              <div class="job_descp">
+                <h3>{{post.title}}</h3>
+                <img src={{post.imageUrl}} id="content">
+              </div>
+              <div class="job-status-bar btm-line">
+                <ul class="like-com">
+                  <li>
+                    <a href="#">
+                      <i class="far fa-thumbs-up"></i>
+                      <span>Like</span>
+                    </a>
+                    <span>24</span>
+                  </li>
+                  <li>
+                    <a href="#" class="com">
+                      <i class="far fa-comments"></i>
+                      <span>Comment</span>
+                    </a>
+                    <span>42</span>
+                  </li>
+                </ul>
+              </div>
+
+              {{#each post.comments}}
+              <div class="comment-area">
+                <div class="post_topbar">
+                  <div class="usy-dt">
+                    <img src={{author.profilePhotoUrl}} alt="user profile picture" class="userAvatar">
+                    <div class="usy-name">
+                      <h3><a href="/user/{{author._id}}">{{author.username}}</a></h3>
+                      <span>When the comment was posted</span>
+                      <p>{{this.content}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+
+              <div class="postComment">
+                <form action="/posts/{{post._id}}/comment" method='POST'>
+                  <textarea name="content" placeholder="Add a Comment" cols="70" rows="1"></textarea>
+                  <button class="comment-btn">Post</button>
+                </form>
+              </div>
+
+              <h3>Location</h3>
+              <div id="map"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      {{!-- </div>
+        </div> --}}
+    </div>
+  </div>
+</main>
+
+
+
+
+
+
+
+{{!-- <h2>{{ post.title }}</h2>
 
 <div>
 {{#if authorized}}
@@ -15,9 +97,9 @@
     tags: {{post.tags}}
   </p>
 
-</div>
+</div> --}}
 
-<hr>
+{{!-- <hr>
 
 {{#unless post.comments}}
   <p>No comments yet!</p>
@@ -27,15 +109,4 @@
   <p><b>{{this.author.username}}</b>: {{this.content}} </p>
 {{/each}}
 
-<hr>
-
-<h3>Location</h3>
-<div id="map"></div>
-
-
-<h3> Add a comment </h3>
-
-<form action="/posts/{{post._id}}/comment" method='POST'>
-  <textarea name="content" cols="30" rows="10"></textarea>
-  <button>Comment</button>
-</form>
+<hr> --}}
