@@ -36,8 +36,35 @@
                     </a>
                     <span>42</span>
                   </li>
+               
+
                 </ul>
               </div>
+
+                     <!-- the following  is added by andrew to add posts to collections -->
+                
+                  <div id='form'>
+                  <form action="/add-to-collection/{{post._id}}" method='POST'>
+                    <label for="collections">Choose a collection:</label>
+                    <select id="collections" name="collections">
+                        
+                        {{#if collectionsFromDb.collections}}
+                          {{#each collectionsFromDb.collections}}
+                              <option value={{this._id}}>{{this.title}}</option>
+                          {{/each}}
+                      {{else}}
+                      <option value=''> Create a new collection</option>
+                      {{/if}}
+                      
+                    </select>
+                  <button type='submit'>Add to Collection</button>
+                  {{#if errorMessage}}
+                  <p class='error'>{{errorMessage}}</p>
+                  {{/if}}
+                  </form>
+                  </div>
+                
+                <!-- this ends the element by andrew -->
 
               {{#each post.comments}}
               <div class="comment-area">
@@ -53,6 +80,8 @@
                 </div>
               </div>
               {{/each}}
+
+
 
               <div class="postComment">
                 <form action="/posts/{{post._id}}/comment" method='POST'>

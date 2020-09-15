@@ -116,10 +116,10 @@ router.get('/add-to-collection', (req, res, next) =>{
     User.findById(req.session.loggedInUser._id)
     .populate('collections posts')
     .then(postsFromDb => {
-         console.log('This is the posts from DB', postsFromDb.collections);
-         for(let i = 0; i < postsFromDb.collections.length; i++) {
-             console.log(postsFromDb.collections[i])
-         }
+        //  console.log('This is the posts from DB', postsFromDb.collections);
+        //  for(let i = 0; i < postsFromDb.collections.length; i++) {
+        //      console.log(postsFromDb.collections[i])
+        //  }
 
 
         res.render('collection/add-to-collection.hbs', {data:postsFromDb} )
