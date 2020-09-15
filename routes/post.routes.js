@@ -71,7 +71,7 @@ router.get('/posts/:postId', (req, res, next) => {
       console.log(`The post information:${foundPost}`);
       const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
       console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
-      res.render('posts/details', { post: foundPost, authorized })
+      res.render('posts/details', { post: foundPost, authorized, encodedPost: JSON.stringify(foundPost) })
     })
     .catch(err => console.log(`Err while getting a single post ${err}`));
 });

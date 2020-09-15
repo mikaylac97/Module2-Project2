@@ -72,6 +72,30 @@
         </div> --}}
     </div>
   </div>
+  <script>
+
+    window.addEventListener('load', () => {
+      const post = JSON.parse('{{encodedPost}}'.replace(/\&quot;/g, '"'))
+      let latitude = post?.location?.coordinates[1];
+      let longitude = post?.location?.coordinates[0];
+      const postLocation = {
+          lat: latitude||58.3816,
+          lng: longitude||34.6037,
+      };
+
+      const map = new google.maps.Map(document.getElementById('map'), {
+          zoom:5,
+          center: postLocation
+      });
+
+      const marker = new google.maps.Marker({
+          position: postLocation,
+          map: map,
+      });
+
+    });
+
+  </script>
 </main>
 
 
