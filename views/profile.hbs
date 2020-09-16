@@ -22,12 +22,36 @@
                   <ul class="flw-status">
                     <li>
                       <span>Following</span>
-                      <b>24</b>
+                      <b>{{user.numOfFollowing}}</b>
                     </li>
                     <li>
                       <span>Followers</span>
-                      <b>42</b>
+                      <b>{{user.numOfFollowers}}</b>
                     </li>
+                    <!-- The following added by andrew for the following button -->
+                    <li>
+                        {{#if user.isFollowing}}
+                          <div id='unFollowForm'>
+                            <form action="/follow/{{user._id}}" method='POST'>
+                            <button type='submit'>Un-Follow</button>
+                            {{#if errorMessage}}
+                            <p class='error'>{{errorMessage}}</p>
+                            {{/if}}
+                            </form>
+                          </div>
+                      {{else}}
+                          <div id='followForm'>
+                            <form action="/follow/{{user._id}}" method='POST'>
+                            <button type='submit'>Follow</button>
+                            {{#if errorMessage}}
+                            <p class='error'>{{errorMessage}}</p>
+                            {{/if}}
+                            </form>
+                          </div>
+                      {{/if}}
+
+                    </li>
+                    <!-- This ends the following button added by andrew -->
                   </ul>
                 </div>
                 {{#unless authorized}}
@@ -79,7 +103,7 @@
                             <i class="far fa-thumbs-up"></i>
                             <span>Like</span>
                           </a>
-                          <span>24</span>
+                          <span>{{this.numOfLikes}}</span>
                         </li>
                         <li>
                           <a href="#" class="com">
