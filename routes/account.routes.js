@@ -29,8 +29,9 @@ router.post('/account-edit', fileUploader.single('image'), (req, res, next) => {
     const {firstname, lastname, username, email, password } = req.body;
 
     if(!username || !email || !password || !firstname || !lastname) {
-        res.render('/account', {
-            errorMessage: 'All fields are mandatory. Please provide your username, email and password.'
+        const authorized = true;
+        res.render('account/account', {
+            errorMessage: 'All fields are mandatory. Please provide your name, username, email and password.',authorized
         });
         return;
     }
