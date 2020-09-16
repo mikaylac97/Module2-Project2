@@ -21,11 +21,11 @@
                     <ul class="user-fw-status">
                         <li>
                           <h4>Following</h4>
-                          <span>#ofFollowing</span>
+                          <span>{{user.numOfFollowing}}</span>
                         </li>
                         <li>
                           <h4>Followers</h4>
-                          <span>#ofFollowers</span>
+                          <span>{{user.numOfFollowers}}</span>
                         </li>
                     </ul>
                     {{/if}}
@@ -84,7 +84,6 @@
             <!-- the following is added by andrew for the like button -->
             <li>
                   {{#if isPostLiked}}
-              
                 <div class ='likeButton'>
                   <form action="/like/{{_id}}" method='POST'>
                   <button type='submit'>Unlike</button>

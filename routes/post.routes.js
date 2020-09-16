@@ -16,6 +16,7 @@ router.post('/post-create', fileUploader.single('image'), (req, res, next) => {
   let longitude = 0;
   let latitude = 0;
   let numOfLikes = 0;
+  let numOfComments = 0;
 
   axios
     .get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyBewseqyTOFrXo5QzeUi1Zj9nsoEoMvHRw&callback`)
@@ -28,6 +29,7 @@ router.post('/post-create', fileUploader.single('image'), (req, res, next) => {
       Post.create({
         title,
         numOfLikes,
+        numOfComments,
         content,
         author: req.session.loggedInUser._id,
         tags: separatedTags,
@@ -86,14 +88,14 @@ router.get('/posts/:postId', (req, res, next) => {
           //  for(let i = 0; i < postsFromDb.collections.length; i++) {
           //      console.log(postsFromDb.collections[i])
           //  }
-          // res.render('collection/add-to-collection.hbs', {data:postsFromDb} )
-          console.log(`The post information:${foundPost}`);
-          const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
-          console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
+          //res.render('collection/add-to-collection.hbs', {data:postsFromDb} )
+          //console.log(`The post information:${foundPost}`);
+          // const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
+          //console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
           console.log('this is the collectionsfromdb', collectionsFromDb.collections)
           res.render('posts/details', { post: foundPost, authorized, collectionsFromDb })
 
-      }).catch(err=> {console.log(`Error finding collections from database: ${err}`);})
+      }).catch(err=> {console.log(`Error finding collections from database: ${err}`)
 
       //this ends the collection drop down menu edit
 

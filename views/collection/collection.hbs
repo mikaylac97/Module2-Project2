@@ -1,6 +1,52 @@
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="col-lg-6">
+                    {{!-- {{#unless user.posts}}
+                <p>No posts yet! Go to nav bar to create a post.</p>
+            {{/unless}} --}}
+                    <div class="main-ws-sec">
+                        <div class="product-feed-tab current" id="feed-dd">
+                            <div class="posts-section">
+                                <h2>Collections</h2>
+                                {{#if collections}}
+                                {{#each collections}}
+                                <div class="post-bar">
+                                    <div class="post_topbar">
+                                        <div class="usy-dt">
+                                            <img src="{{this.author.profilePhotoUrl}}" class="userAvatar">
+                                            <div class="usy-name">
+                                                <h3>{{this.author.username}}</h3>
+                                                <span>
+                                                    when the collection was made
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="job_descp">
+                                        <h3>{{title}}</h3>
+                                        <img src="{{collectionPhotoUrl}}" id="content">
+                                        <p><a href="/collection/{{_id}}">Show Details</a></p>
+                                    </div>
+                                </div>
+                                {{/each}}
+                                {{else}}
+                                <p>No posts found</p>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
 
 
-{{#if collections}}
+
+{{!-- {{#if collections}}
   <ul>
     {{#each collections}}
       <li>
@@ -19,4 +65,4 @@
 {{/if}}
 
 
-<a href="/create-collection">Click to make a collection"</a>
+<a href="/create-collection">Click to make a collection"</a> --}}
