@@ -91,7 +91,7 @@ router.get('/posts/:postId', (req, res, next) => {
           //  }
           //res.render('collection/add-to-collection.hbs', {data:postsFromDb} )
           //console.log(`The post information:${foundPost}`);
-          const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
+          // const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
           //console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
           console.log('this is the collectionsfromdb', collectionsFromDb.collections)
           res.render('posts/details', { post: foundPost, authorized, collectionsFromDb })

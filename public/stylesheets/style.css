@@ -80,6 +80,12 @@ a {
   width: 380px;
 }
 
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 form label {
   color: #666;
   display: inline-block;
@@ -384,7 +390,7 @@ ul li {
   float: left;
   width: 100%;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 

@@ -30,9 +30,19 @@
                     </li>
                   </ul>
                 </div>
-                {{#if authorized}}
-                <a href="/account">Account Information</a>
-                {{/if}}
+                {{#unless authorized}}
+                  {{#if isFollowing}}
+                  <form action="/follow/{{_id}}" method='POST'>
+                    <button type='submit'>Un-Follow</button>
+
+                    {{else}}
+                    <form action="/follow/{{_id}}" method='POST'>
+                    <button type='submit'>Follow</button>
+
+                  {{/if}}
+                {{/unless}}
+                
+
                 <!-- followers/following end -->
               </div>
             </div>
