@@ -75,31 +75,23 @@ router.get('/posts/:postId', (req, res, next) => {
       }
     })
     .then((foundPost) => {
-<<<<<<< HEAD
-=======
 
-      console.log(`The post information:${foundPost}`);
-      const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
-      console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
-      res.render('posts/details', { post: foundPost, authorized, encodedPost: JSON.stringify(foundPost) })
-
->>>>>>> 46752524b63308e6fd33a54465c7bb2a1f4c7b00
       //the following is added by andrew to populate the collection drop down menu
-//       User.findById(req.session.loggedInUser._id)
-//       .populate('collections')
-//       .then(collectionsFromDb => {
+      // User.findById(req.session.loggedInUser._id)
+      // .populate('collections')
+      // .then(collectionsFromDb => {
           //  console.log('This is the posts from DB', postsFromDb.collections);
           //  for(let i = 0; i < postsFromDb.collections.length; i++) {
           //      console.log(postsFromDb.collections[i])
           //  }
-          //res.render('collection/add-to-collection.hbs', {data:postsFromDb} )
-          //console.log(`The post information:${foundPost}`);
+          // res.render('collection/add-to-collection.hbs', {data:postsFromDb} )
+          console.log(`The post information:${foundPost}`);
           const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
-          //console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
+          console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
           console.log('this is the collectionsfromdb', collectionsFromDb.collections)
           res.render('posts/details', { post: foundPost, authorized, collectionsFromDb })
 
-//       }).catch(err=> {console.log(`Error finding collections from database: ${err}`);})
+      }).catch(err=> {console.log(`Error finding collections from database: ${err}`);})
 
       //this ends the collection drop down menu edit
 
@@ -107,10 +99,7 @@ router.get('/posts/:postId', (req, res, next) => {
       // const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
       // console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
       // res.render('posts/details', { post: foundPost, authorized })
-<<<<<<< HEAD
-=======
-// >>>>>>> master
->>>>>>> 46752524b63308e6fd33a54465c7bb2a1f4c7b00
+
     })
     .catch(err => console.log(`Err while getting a single post ${err}`));
 });
