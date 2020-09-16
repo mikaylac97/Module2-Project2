@@ -51,7 +51,14 @@ const userSchema = new Schema(
         }],
         isFollowing: {
             type: Boolean
+        },
+        numOfFollowers:{
+            type: Number
+        },
+        numOfFollowing:{
+            type: Number
         }
+            
     },
     {
         timestamps: true

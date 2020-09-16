@@ -14,7 +14,17 @@ router.get('/user/:userId', (req, res, next) => {
     User.findById(req.params.userId)
     .populate('posts')
     .then((userFromDb) => {
+        //following is added by andrew for the follower button
+            
+                //console.log({currentUser: req.session.loggedInUser.following, user: userFromDb._id})
+                userFromDb.isFollowing =  req.session.loggedInUser.following.includes(userFromDb._id.toString()) ? true : false;
+                userFromDb.numOfFollowers = userFromDb.followers.length;
+                userFromDb.numOfFollowing = userFromDb.following.length;
+        //this ends the addition by andrew
+
         const authorized =  req.session.loggedInUser._id.toString() === userFromDb._id.toString()
+        console.log("this is the number of followers: ", userFromDb.numOfFollowers)
+        console.log("this is the number of following: ", userFromDb.numOfFollowing)
         console.log(`User from db:${userFromDb}, ${authorized}`);
         res.render('profile', {user: userFromDb, authorized });
     })

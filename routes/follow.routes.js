@@ -101,7 +101,7 @@ router.post('/follow/:personToFollowsId', (req, res, next) => {
                     .save()
                     .then((updatedCurrentUser) => {
                         //console.log({ updatedCurrentUser });
-                        res.redirect("/user-list");
+                        res.redirect("back");
                     }).catch((err) => next(err));
             }).catch((err) => next(err));
       }).catch(err => next(err));

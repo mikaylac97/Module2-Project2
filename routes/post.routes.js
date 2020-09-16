@@ -15,6 +15,7 @@ router.post('/post-create', fileUploader.single('image'), (req, res, next) => {
   const separatedTags = tags.split(' ');
   let longitude = 0;
   let latitude = 0;
+  let numOfLikes = 0;
 
   axios
     .get(`https://maps.googleapis.com/maps/api/geocode/json?address=${location}&key=AIzaSyBewseqyTOFrXo5QzeUi1Zj9nsoEoMvHRw&callback`)
@@ -26,6 +27,7 @@ router.post('/post-create', fileUploader.single('image'), (req, res, next) => {
       
       Post.create({
         title,
+        numOfLikes,
         content,
         author: req.session.loggedInUser._id,
         tags: separatedTags,
@@ -52,11 +54,11 @@ router.get('/posts', (req, res, next) => {
     .populate('author')
     .then(postsFromDB => {
       //the following is added by andrew
-        // User.findById(req.session.loggedInUser._id)
-        // .populate('collections posts')
-        // .then(collectionsFromDb => {
-            
-        // }).catch(err => {console.log(`Error while finding users collections${err}`)})
+      postsFromDB.forEach(post => {
+        console.log("this is the num of likes: ", post.numOfLikes)
+        post.isPostLiked = req.session.loggedInUser.likes.includes(post._id.toString()) ? true : false;
+        
+    })
       // this ends what was added by andrew
       res.render('posts/list', { posts: postsFromDB.reverse() });
     })
