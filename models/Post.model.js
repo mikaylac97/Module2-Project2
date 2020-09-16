@@ -10,7 +10,8 @@ const postSchema = new Schema(
     imageUrl: { type: String },
     location: { type: { type: String }, coordinates: [Number] },
     isPostLiked: {type: Boolean},
-    numOfLikes:{type: Number}
+    numOfLikes:{type: Number},
+    numOfComments: {type: Number},
   },
   {
     timestamps: true
