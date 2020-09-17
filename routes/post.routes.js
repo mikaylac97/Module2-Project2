@@ -61,8 +61,14 @@ router.get('/posts', (req, res, next) => {
         post.isPostLiked = req.session.loggedInUser.likes.includes(post._id.toString()) ? true : false;
         
     })
+        User.findById(req.session.loggedInUser._id)
+        .then(user => {
+            user.numOfFollowers = user.followers.length;
+            user.numOfFollowing = user.following.length;
+            res.render('posts/list', { posts: postsFromDB.reverse(), user });
+        }).catch(err => {console.log(`Error finding user in db and updating num of followers ${err}`)})
       // this ends what was added by andrew
-      res.render('posts/list', { posts: postsFromDB.reverse() });
+      
     })
     .catch(err => console.log(`Err while getting all the posts: ${err}`));
 });
