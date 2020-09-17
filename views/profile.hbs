@@ -54,9 +54,19 @@
                     <!-- This ends the following button added by andrew -->
                   </ul>
                 </div>
-                {{#if authorized}}
-                <a href="/account">Account Information</a>
-                {{/if}}
+                {{#unless authorized}}
+                  {{#if isFollowing}}
+                  <form action="/follow/{{_id}}" method='POST'>
+                    <button type='submit'>Un-Follow</button>
+
+                    {{else}}
+                    <form action="/follow/{{_id}}" method='POST'>
+                    <button type='submit'>Follow</button>
+
+                  {{/if}}
+                {{/unless}}
+                
+
                 <!-- followers/following end -->
               </div>
             </div>
@@ -72,7 +82,7 @@
                   <div class="post-bar">
                     <div class="post_topbar">
                       <div class="usy-dt">
-                        <img src="{{this.author.profilePhotoUrl}}" class="userAvatar">
+                        <img src="{{user.profilePhotoUrl}}" class="userAvatar">
                         <div class="usy-name">
                           <h3>{{this.author.username}}</h3>
                           <span>

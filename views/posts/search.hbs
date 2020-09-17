@@ -9,15 +9,15 @@
                     <div class="main-ws-sec">
                         <div class="product-feed-tab current" id="feed-dd">
                             <div class="posts-section">
-                                <h3>Posts</h3>
-                                {{#if searchResult}}
-                                {{#each searchResult}}
+                                <h2>Posts</h2>
+                                {{#if postSearch}}
+                                {{#each postSearch}}
                                 <div class="post-bar">
                                     <div class="post_topbar">
                                         <div class="usy-dt">
                                             <img src="{{author.profilePhotoUrl}}" class="userAvatar">
                                             <div class="usy-name">
-                                                <h3>{{author.username}}</h3>
+                                                <h3>{{author}}</h3>
                                                 <span>
                                                     when the post was posted
                                                 </span>
@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="job_descp">
                                         <h3>{{title}}</h3>
-                                        <img src={{imageUrl}} id="content">
+                                        <img src="{{imageUrl}}" id="content">
                                         <p><a href="/posts/{{_id}}">Show Details</a></p>
                                     </div>
                                     <div class="job-status-bar">
@@ -53,21 +53,46 @@
                                 <p>No posts found</p>
                                 {{/if}}
                             </div>
+            
                             <h2>Users</h2>
-                            {{#if userSearchResult}}
-                            {{#each userSearchResult}}
-                            <h4>User: {{username}}</h2>
-                                <img src="{{profilePhotoUrl}}" alt="{{username}}" class="userAvatar">
-                                <a href="user/{{_id}}">User Profile</a>
+
+                            {{#if userSearch}}
+                            {{#each userSearch}}
+                            <div class="post-bar">
+                                    <div class="post_topbar">
+                                        <div class="usy-dt">
+                                            <img src="{{profilePhotoUrl}}" class="userAvatar">
+                                            <div class="usy-name">
+                                               <a href="/user/{{_id}}"><h3>{{username}}</h3></a> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 {{/each}}
                                 {{else}}
                                 <p>No Users found</p>
                                 {{/if}}
                                 <h2>Collections</h2>
-                                {{#if collection}}
-                                {{#each collection}}
-                                <h4>Collection's Title: {{title}}</h2>
-                                    <p>{{description}}</p>
+                                {{#if collectionSearch}}
+                                {{#each collectionSearch}}
+                                <div class="post-bar">
+                                    <div class="post_topbar">
+                                        <div class="usy-dt">
+                                            <img src="{{author.profilePhotoUrl}}" class="userAvatar">
+                                            <div class="usy-name">
+                                                <h3>{{author}}</h3>
+                                                <span>
+                                                    when the collection was made
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="job_descp">
+                                        <h3>{{title}}</h3>
+                                        <img src="{{collectionPhotoUrl}}" id="content">
+                                        <p><a href="/collection/{{_id}}">View Collection</a></p>
+                                    </div>
+                                </div>
                                     {{/each}}
                                     {{else}}
                                     <p>No Collections found</p>
@@ -81,10 +106,12 @@
     </div>
 </main>
 
-
-<!-- <div>
+{{!-- 
+ <div>
     <h2>Search Results</h2>
-</div>
+</div> 
+
+<!---->
 
 
 <div>
@@ -126,7 +153,7 @@
 
 -->
 
-<h2>Hello {{data.[1]}}</h2>
+<h2>Search Results {{data.[1]}}</h2>
 <div>
     <h2>Posts</h2>
     {{#if postSearch}}
@@ -163,4 +190,4 @@
     {{else}}
         <p>No Collections found</p>
     {{/if}}
-</div>
+</div> --}}
