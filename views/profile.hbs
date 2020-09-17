@@ -30,10 +30,11 @@
                     </li>
                     <!-- The following added by andrew for the following button -->
                     <li>
+                      {{#unless authorized}}
                         {{#if user.isFollowing}}
                           <div id='unFollowForm'>
                             <form action="/follow/{{user._id}}" method='POST'>
-                            <button type='submit'>Un-Follow</button>
+                            <button type='submit'>Unfollow</button>
                             {{#if errorMessage}}
                             <p class='error'>{{errorMessage}}</p>
                             {{/if}}
@@ -49,12 +50,13 @@
                             </form>
                           </div>
                       {{/if}}
+                      {{/unless}}
 
                     </li>
                     <!-- This ends the following button added by andrew -->
                   </ul>
                 </div>
-                {{#unless authorized}}
+                {{!-- {{#unless authorized}}
                   {{#if isFollowing}}
                   <form action="/follow/{{_id}}" method='POST'>
                     <button type='submit'>Un-Follow</button>
@@ -64,7 +66,7 @@
                     <button type='submit'>Follow</button>
 
                   {{/if}}
-                {{/unless}}
+                {{/unless}} --}}
                 
 
                 <!-- followers/following end -->
@@ -89,6 +91,16 @@
                             when the post was posted
                           </span>
                         </div>
+                      </div>
+                      <div class="ed-opts">
+                        <a hred="#" class="ed-opts-open">
+                          <i class="fas fa-ellipsis-v"></i>
+                        </a>
+                        <ul class="ed-options active">
+                          <li>
+                            <a href="">Edit post</a>
+                          </li>
+                        </ul>
                       </div>
                     </div>
                     <div class="job_descp">
