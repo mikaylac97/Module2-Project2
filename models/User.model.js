@@ -14,7 +14,7 @@ const userSchema = new Schema(
         },
         profilePhotoUrl: {
             type: String,
-            default: 'https://www.pikpng.com/pngvi/bJoxRi_default-avatar-svg-png-icon-free-download-264157-user-avatar-icon-png/'
+            default: 'https://res.cloudinary.com/drewcloud06/image/upload/v1600378605/user-profile-computer-icons-avatar-clip-art-png-favpng-wKErPr4niCcNM5Hz3yf1n82Kg_kud13z.jpg'
         },
         followers: [{
             type: Schema.Types.ObjectId, ref :'User'
