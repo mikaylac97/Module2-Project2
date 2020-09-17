@@ -40,7 +40,7 @@
           <p><a href="/posts"> IronTumblr </a></p>
         </li>
         <li id="to-right">
-    
+    {{!-- {{#if authorized}} --}}
     {{#if user}}
           <div class="dropdown">
             <button class="dropbtn"><img src="{{user.profilePhotoUrl}}" class="userAvatar"></button>
@@ -56,6 +56,7 @@
             </div>
           </div>
     {{/if}}
+    {{!-- {{/if}} --}}
         </li>
       </ul>
     </nav>

@@ -50,7 +50,7 @@
                         
                         {{#if collectionsFromDb.collections}}
                           {{#each collectionsFromDb.collections}}
-                              <option value={{this._id}}>{{this.title}}</option>
+                              <option value="{{this._id}}">{{this.title}}</option>
                           {{/each}}
                       {{else}}
                       <option value=''> Create a new collection</option>
