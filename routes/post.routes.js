@@ -73,6 +73,30 @@ router.get('/posts', (req, res, next) => {
     .catch(err => console.log(`Err while getting all the posts: ${err}`));
 });
 
+//get route to display following users posts
+router.get('/home', (req, res, next) => {
+  Post.find({author: {$in: req.session.loggedInUser.following}})
+    .populate('author')
+    .then(postsFromDB => {
+      //the following is added by andrew
+      postsFromDB.forEach(post => {
+        console.log("this is the num of likes: ", post.numOfLikes)
+        post.isPostLiked = req.session.loggedInUser.likes.includes(post._id.toString()) ? true : false;
+    })
+        User.findById(req.session.loggedInUser._id)
+        .then(user => {
+            user.numOfFollowers = user.followers.length;
+            user.numOfFollowing = user.following.length;
+            res.render('posts/home', { posts: postsFromDB.reverse(), user });
+        }).catch(err => {console.log(`Error finding user in db and updating num of followers ${err}`)})
+      // this ends what was added by andrew
+      
+    })
+    .catch(err => console.log(`Err while getting all the posts: ${err}`));
+});
+
+
+
 //get route to show the details of a single post
 
 router.get('/posts/:postId', (req, res, next) => {
