@@ -77,17 +77,16 @@ router.get('/posts/:postId', (req, res, next) => {
       }
     })
     .then((foundPost) => {
-      //following is just so i can make a new push
-      console.log('this is for the new push')
+     
       console.log(`The post information:${foundPost}`);
       const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
       console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
-      res.render('posts/details', { post: foundPost, authorized, encodedPost: JSON.stringify(foundPost) })
+      //res.render('posts/details', { post: foundPost, authorized, encodedPost: JSON.stringify(foundPost) })
 
       //the following is added by andrew to populate the collection drop down menu
-//       User.findById(req.session.loggedInUser._id)
-//       .populate('collections')
-//       .then(collectionsFromDb => {
+       User.findById(req.session.loggedInUser._id)
+       .populate('collections')
+       .then(collectionsFromDb => {
           //  console.log('This is the posts from DB', postsFromDb.collections);
           //  for(let i = 0; i < postsFromDb.collections.length; i++) {
           //      console.log(postsFromDb.collections[i])
@@ -97,9 +96,9 @@ router.get('/posts/:postId', (req, res, next) => {
               //const authorized =  req.session.loggedInUser._id.toString() === foundPost.author._id.toString()
           //console.log('53',req.session.loggedInUser._id, foundPost.author._id,authorized)
               //console.log('this is the collectionsfromdb', collectionsFromDb.collections)
-             // res.render('posts/details', { post: foundPost, authorized, collectionsFromDb })
+              res.render('posts/details', { post: foundPost, authorized, collectionsFromDb, encodedPost: JSON.stringify(foundPost) })
 
-//       }).catch(err=> {console.log(`Error finding collections from database: ${err}`);})
+       }).catch(err=> {console.log(`Error finding collections from database: ${err}`);})
 
       //this ends the collection drop down menu edit
 
