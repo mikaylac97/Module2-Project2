@@ -13,7 +13,7 @@ const collectionSchema = new Schema(
     },
     collectionPhotoUrl: {
       type: String,
-      default: 'https://www.pikpng.com/pngvi/bJoxRi_default-avatar-svg-png-icon-free-download-264157-user-avatar-icon-png/'
+      default: 'https://res.cloudinary.com/drewcloud06/image/upload/v1600379020/93554615-iron-chemical-element-periodic-table-science-symbol_guuqyr.jpg'
   },
     author: { type: Schema.Types.ObjectId, ref: 'User' },
     posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],

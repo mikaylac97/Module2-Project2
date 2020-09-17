@@ -17,7 +17,8 @@ router.post('/posts/:postId/comment', (req, res, next) => {
         .then(newCommentFromDB => {
           //push the comment ID to the array of comments that belons to the post
           postFromDB.comments.push(newCommentFromDB._id);
-
+          //
+          postFromDB.numOfComments ++;
           //save the post with the comments to the DB
           postFromDB
             .save()
