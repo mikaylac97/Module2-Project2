@@ -76,20 +76,20 @@
         </div>
         <div class="job-status-bar">
           <ul class="like-com">
-            <li>
+            {{!-- <li>
               <a href="#">
                 <i class="far fa-thumbs-up"></i>
                 <span>Like</span>
               </a>
               <span>{{this.numOfLikes}}</span>
-            </li>
+            </li> --}}
 
             <!-- the following is added by andrew for the like button -->
             <li>
                   {{#if isPostLiked}}
                 <div class ='likeButton'>
                   <form action="/like/{{_id}}" method='POST'>
-                  <button type='submit'>Unlike</button>
+                  <button type='submit'><i class="far fa-thumbs-up"></i>Unlike</button>
                   {{#if errorMessage}}
                   <p class='error'>{{errorMessage}}</p>
                   {{/if}}
@@ -99,7 +99,7 @@
                 
                 <div class ='likeButton'>
                   <form action="/like/{{_id}}" method='POST'>
-                  <button type='submit'>Like</button>
+                  <button type='submit'><i class="far fa-thumbs-up"></i>Like</button>
                   {{#if errorMessage}}
                   <p class='error'>{{errorMessage}}</p>
                   {{/if}}

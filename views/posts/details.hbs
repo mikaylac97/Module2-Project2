@@ -23,19 +23,36 @@
               <div class="job-status-bar btm-line">
                 <ul class="like-com">
                   <li>
-                    <a href="#">
-                      <i class="far fa-thumbs-up"></i>
-                      <span>Like</span>
-                    </a>
-                    <span>{{post.numOfLikes}}</span>
-                  </li>
-                  <li>
-                    <a href="#" class="com">
-                      <i class="far fa-comments"></i>
-                      <span>Comment</span>
-                    </a>
-                    <span>{{post.numOfComments}}</span>
-                  </li>
+                  {{#if isPostLiked}}
+                <div class ='likeButton'>
+                  <form action="/like/{{_id}}" method='POST'>
+                  <button type='submit'>Unlike</button>
+                  {{#if errorMessage}}
+                  <p class='error'>{{errorMessage}}</p>
+                  {{/if}}
+                  </form>
+                </div>
+            {{else}}
+                
+                <div class ='likeButton'>
+                  <form action="/like/{{_id}}" method='POST'>
+                  <button type='submit'>Like</button>
+                  {{#if errorMessage}}
+                  <p class='error'>{{errorMessage}}</p>
+                  {{/if}}
+                  </form>
+                </div>
+            {{/if}}
+
+
+            </li>
+            <li>
+              <a href="/posts/{{_id}}" class="com">
+                <i class="far fa-comments"></i>
+                <span>Comment</span>
+              </a>
+              <span>{{numOfComments}}</span>
+            </li>
                
 
                 </ul>

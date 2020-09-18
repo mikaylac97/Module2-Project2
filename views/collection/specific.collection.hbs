@@ -1,34 +1,95 @@
-<h2>This is the {{this.title}} collections page</h2>
+<main>
+  <div class="main-section">
+    <div class="container">
+      <div class="main-section-data">
+        <div class="col-lg-6">
+          <div class="main-ws-sec">
+            <div class="product-feed-tab current" id="feed-dd">
+              <div class="posts-section">
+                <h2>Collections</h2>
+                {{#if posts}}
+                {{#each posts}}
+                <div class="post-bar">
+                  <div class="post_topbar">
+                    {{!-- <div class="usy-dt">
+                      <img src="{{author.profilePhotoUrl}}" class="userAvatar">
+                      <div class="usy-name">
+                        <h3>{{author.username}}</h3>
+                      </div>
+                    </div> --}}
+                  </div>
+                  <div class="job_descp">
+                    <h3>{{title}}</h3>
+                    <img src="{{this.imageUrl}}" id="content">
+                    <p><a href="/posts/{{_id}}">Show Details</a></p>
+                  </div>
+                  </div>
+                  <div id='form'>
+                    <form action="/delete-from-collection/{{this._id}}/{{../this.id}}" method='POST'>
 
-
-
-
-  {{#if posts}}
-  <ul>
-    {{#each posts}}
-      <li>
-        Title: {{this.title}}
-         <div id='form'>
-            <form action="/delete-from-collection/{{this._id}}/{{../this.id}}" method='POST'>
-              
-            <button type='submit'>Delete from collection</button>
-            {{#if errorMessage}}
-             <p class='error'>{{errorMessage}}</p>
-             {{/if}}
-            </form>
+                      <button type='submit'>Delete from collection</button>
+                      {{#if errorMessage}}
+                      <p class='error'>{{errorMessage}}</p>
+                      {{/if}}
+                    </form>
+                  </div>
+                
+                {{/each}}
+                {{else}}
+                <p>No posts found</p>
+                {{/if}}
+              </div>
+            </div>
+          </div>
         </div>
-      </li>
-    {{/each}}
-  </ul>
-{{else}}
-  <p>This collection contains no posts yet!</p>
-{{/if}}
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
 
 
 
 
 
-<div id="delete-collection">
+
+
+
+{{!-- <h2>This is the {{this.title}} collections page</h2>
+
+
+
+              <div class="posts-section">
+                {{#if posts}}
+                <ul>
+                  {{#each posts}}
+                  <li>
+                    {{this.title}}
+                  </li>
+                  <li>
+                    <img src="{{this.imageUrl}}" id="content">
+                  </li>
+                  <li>
+                    <a href="/posts/{{this._id[0]}}">Show details</a>
+                  </li>
+                  <div id='form'>
+                    <form action="/delete-from-collection/{{this._id}}/{{../this.id}}" method='POST'>
+
+                      <button type='submit'>Delete from collection</button>
+                      {{#if errorMessage}}
+                      <p class='error'>{{errorMessage}}</p>
+                      {{/if}}
+                    </form>
+                  </div>
+                  </li>
+                  {{/each}}
+                </ul>
+                {{else}}
+                <p>This collection contains no posts yet!</p>
+                {{/if}}
+              </div> --}}
+
+{{!-- <div id="delete-collection">
   <form action="/delete-collection/{{this.id}}" method='POST'>
        
      <button type='submit'>Delete this collection?</button>
@@ -36,9 +97,4 @@
       <p class='error'>{{errorMessage}}</p>
       {{/if}}
     </form>
-</div>
-     
-
-
-
-
+</div> --}}
