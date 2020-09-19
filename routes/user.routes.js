@@ -13,6 +13,12 @@ const Post = require('../models/Post.model');
 router.get('/user/:userId', (req, res, next) => {
     User.findById(req.params.userId)
     .populate('posts')
+    .populate({
+        path: 'posts',
+        populate: {
+          path: 'author'
+        }
+      })
     .then((userFromDb) => {
         //following is added by andrew for the follower button
             

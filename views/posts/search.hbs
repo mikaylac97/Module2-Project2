@@ -17,7 +17,7 @@
                                         <div class="usy-dt">
                                             <img src="{{author.profilePhotoUrl}}" class="userAvatar">
                                             <div class="usy-name">
-                                                <h3>{{author}}</h3>
+                                                <h3>{{author.username}}</h3>
                                                 <span>
                                                     when the post was posted
                                                 </span>
@@ -36,14 +36,14 @@
                                                     <i class="far fa-thumbs-up"></i>
                                                     <span>Like</span>
                                                 </a>
-                                                <span>24</span>
+                                                <span>{{numOfLikes}}</span>
                                             </li>
                                             <li>
                                                 <a href="#" class="com">
                                                     <i class="far fa-comments"></i>
                                                     <span>Comment</span>
                                                 </a>
-                                                <span>42</span>
+                                                <span>{{numOfComments}}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -80,7 +80,7 @@
                                         <div class="usy-dt">
                                             <img src="{{author.profilePhotoUrl}}" class="userAvatar">
                                             <div class="usy-name">
-                                                <h3>{{author}}</h3>
+                                                <h3>{{author.username}}</h3>
                                                 <span>
                                                     when the collection was made
                                                 </span>

@@ -65,6 +65,7 @@ const searchQuery = req.query.search;
                     {location: searchQuery}
                 ]
     })
+    .populate('author')
     .then(postsFromDB => {
        // data.push({postsFromDB});
         //console.log(response);
@@ -84,6 +85,7 @@ const searchQuery = req.query.search;
                         {description: searchQuery}
                     ]
                 })
+                .populate('author')
                 .then(collectionFromDB => {
                    // data.push( {collectionFromDB} );
                     //console.log("This is in the collection find", {data: postsFromDB, userFromDB, collectionFromDB});
