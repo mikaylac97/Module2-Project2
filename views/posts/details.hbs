@@ -23,9 +23,9 @@
               <div class="job-status-bar btm-line">
                 <ul class="like-com">
                   <li>
-                  {{#if isPostLiked}}
+                  {{#if post.isPostLiked}}
                 <div class ='likeButton'>
-                  <form action="/like/{{_id}}" method='POST'>
+                  <form action="/like/{{post._id}}" method='POST'>
                   <button type='submit'>Unlike</button>
                   {{#if errorMessage}}
                   <p class='error'>{{errorMessage}}</p>
@@ -35,7 +35,7 @@
             {{else}}
                 
                 <div class ='likeButton'>
-                  <form action="/like/{{_id}}" method='POST'>
+                  <form action="/like/{{post._id}}" method='POST'>
                   <button type='submit'>Like</button>
                   {{#if errorMessage}}
                   <p class='error'>{{errorMessage}}</p>

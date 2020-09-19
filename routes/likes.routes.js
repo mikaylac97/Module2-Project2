@@ -73,7 +73,7 @@ router.post('/like/:postToLikeId', (req, res, next) => {
                     Post.findById(req.params.postToLikeId)
                         .then(postFromDb =>{
                             postFromDb.numOfLikes --;
-                            console.log("this is the num of likes before decrement for this post", postFromDb.numOfLikes)
+                            //console.log("this is the num of likes before decrement for this post", postFromDb.numOfLikes)
                             postFromDb.save()
                             .then(updatedPost => {
                                 res.redirect('back')
@@ -89,7 +89,7 @@ router.post('/like/:postToLikeId', (req, res, next) => {
                         Post.findById(req.params.postToLikeId)
                         .then(postFromDb =>{
                             postFromDb.numOfLikes ++;
-                            console.log("this is the num of likes before decrement for this post", postFromDb.numOfLikes)
+                            //console.log("this is the num of likes before decrement for this post", postFromDb.numOfLikes)
                             postFromDb.save()
                             .then(updatedPost => {
                                 res.redirect('back')
