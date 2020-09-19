@@ -271,7 +271,7 @@ ul li {
 
 
 #to-left {
-  float: left;
+  /* float: left; */
   padding: 30px 30px;
 }
 
@@ -595,7 +595,7 @@ input {
   transition: all 0.3s;
   vertical-align: middle;
   margin: 0;
-  float: right;
+  /* float: right; */
   text-transform: uppercase;
 }
 
